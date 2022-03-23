@@ -31,7 +31,7 @@ export function Header() {
         <i className="fa fa-search header-icon align-center"></i>
       </div>
       <nav className="nav-bar align-center">
-        <div classNameName="responsive-header-links flex-row ml-auto">
+        <div className="responsive-header-links flex-row ml-auto">
           <button>
             <i className="fa fa-search header-icon align-end mobile-search-icon"></i>
           </button>
