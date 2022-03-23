@@ -7,79 +7,79 @@ import { useNavbar } from "../../contexts/navbar-context";
 export function Header() {
   const { setShowResponsiveNavbarForMobile } = useNavbar();
   return (
-    <header class="page-header flex-row justify-space-between">
+    <header className="page-header flex-row justify-space-between">
       <ResponsiveNavbarForMobile />
       <button
         onClick={() => {
           setShowResponsiveNavbarForMobile(true);
         }}
-        class="hamburger-menu"
+        className="hamburger-menu"
       >
-        <i class="fa fa-bars header-icon"></i>
+        <i className="fa fa-bars header-icon"></i>
       </button>
       <Link to="/">
-        <div class="header-logo">
+        <div className="header-logo">
           <img
-            class="responsive-img"
+            className="responsive-img"
             src="assets/ma_logo.png"
             alt="mandeshi-agro-logo"
           />
         </div>
       </Link>
-      <div class="search-bar-box align-center flex-row justify-space-between">
-        <input class="search-bar" type="text" placeholder="Search" />
-        <i class="fa fa-search header-icon align-center"></i>
+      <div className="search-bar-box align-center flex-row justify-space-between">
+        <input className="search-bar" type="text" placeholder="Search" />
+        <i className="fa fa-search header-icon align-center"></i>
       </div>
-      <nav class="nav-bar align-center">
-        <div className="responsive-header-links flex-row ml-auto">
+      <nav className="nav-bar align-center">
+        <div classNameName="responsive-header-links flex-row ml-auto">
           <button>
-            <i class="fa fa-search header-icon align-end mobile-search-icon"></i>
+            <i className="fa fa-search header-icon align-end mobile-search-icon"></i>
           </button>
           <Link to="/cart">
-            <div class="badge mobile-cart-icon">
-              <i class="fa fa-shopping-cart header-icon header-badge-icon"></i>
-              <span class="badge-counter badge-round badge-counter-right">
+            <div className="badge mobile-cart-icon">
+              <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
+              <span className="badge-counter badge-round badge-counter-right">
                 2
               </span>
             </div>
           </Link>
         </div>
         <ResponsiveNavbarForTablet />
-        <ul class="nav-list flex-row">
+        <ul className="nav-list flex-row">
           <Link to="/products">
-            <div class="list-item-box flex-row">
-              <span class="material-icons header-icon products-icon align-center">
+            <div className="list-item-box flex-row">
+              <span className="material-icons header-icon products-icon align-center">
                 inventory
               </span>
-              <li class="list-item list-item-products">Products</li>
+              <li className="list-item list-item-products">Products</li>
             </div>
           </Link>
           <Link to="/cart">
-            <div class="list-item-box flex-row">
-              <div class="badge">
-                <i class="fa fa-shopping-cart header-icon header-badge-icon"></i>
-                <span class="badge-counter badge-round badge-counter-right">
+            <div className="list-item-box flex-row">
+              <div className="badge">
+                <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
+                <span className="badge-counter badge-round badge-counter-right">
                   2
                 </span>
               </div>
-              <li class="list-item align-center">Cart</li>
+              <li className="list-item align-center">Cart</li>
             </div>
           </Link>
           <Link to="/wishlist">
-            <div class="list-item-box flex-row">
-              <div class="badge">
-                <i class="fa fa-heart header-icon header-badge-icon"></i>
-                <span class="badge-counter badge-round badge-counter-right">
+            <div className="list-item-box flex-row">
+              <div className="badge">
+                <i className="fa fa-heart header-icon header-badge-icon"></i>
+                <span className="badge-counter badge-round badge-counter-right">
                   4
                 </span>
               </div>
-              <li class="list-item align-center">Wishlist</li>
+              <li className="list-item align-center">Wishlist</li>
             </div>
           </Link>
           <Link to="/auth">
-            <div class="list-item-box list-item-login flex-row">
-              <i class="fa fa-user header-icon header-badge-icon align-end"></i>
-              <li class="list-item align-center">Login</li>
+            <div className="list-item-box list-item-login flex-row">
+              <i className="fa fa-user header-icon header-badge-icon align-end"></i>
+              <li className="list-item align-center">Login</li>
             </div>
           </Link>
         </ul>
