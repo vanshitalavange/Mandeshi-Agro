@@ -16,6 +16,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
