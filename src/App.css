@@ -1,51 +1,55 @@
-.App {
-  text-align: center;
-}
+:root {
+  /** colors **/
+  --primary-color: hsl(81, 56%, 57%);
+  --secondary-color: hsl(146, 85%, 18%);
+  --white-color: hsl(0, 0%, 100%);
+  --accent-color: hsl(133, 41%, 54%);
+  --scroll-x-icon-color: hsl(0, 0%, 50%);
+  --scroll-x-icon-bg-color: hsl(0, 2%, 91%);
+  --header-item-grey-color: hsl(0, 1%, 60%);
+  --search-icon-hover-color: hsl(0, 6%, 90%);
+  --title-border-bottom-color: hsl(0, 3%, 82%);
+  --product-card-grey-color: hsl(0, 0%, 80%);
+  --login-signup-popup-bg-color: hsla(0, 0%, 0%, 0.7);
+  --form-input-bg-color: hsl(0, 0%, 93%);
+  --remove-icon-color: hsl(0, 4%, 75%);
+  --price-text-color: hsl(0, 1%, 22%);
+  --required-field-indicator-color: hsl(0, 100%, 50%);
+  --footer-background-color: hsl(0, 0%, 94%);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  /** spacing **/
+  --spacing-xxs: 0.5rem;
+  --spacing-xs: 1rem;
+  --spacing-sm: 1.5rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 3.5rem;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  /** font-size **/
+  --font-size-xxs: 0.8rem;
+  --font-size-xs: 1rem;
+  --font-size-sm: 1.2rem;
+  --font-size-md: 1.4rem;
+  --font-size-lg: 1.6rem;
+  --font-size-xl: 1.8rem;
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
+  /** font-weight **/
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
 
-.App-link {
-  color: #61dafb;
+  /** border-radius **/
+  --border-rd-xs: 3px;
+  --border-rd-sm: 6px;
+  --border-rd-md: 8px;
+  --border-rd-lg: 16px;
+  --border-rd-xl: 24px;
+  --border-rd-round: 50%;
 }
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+body {
+  margin-top: var(--spacing-xxs);
 }
