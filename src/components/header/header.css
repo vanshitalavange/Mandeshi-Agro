@@ -1,0 +1,114 @@
+.page-header {
+  background-color: var(--white-color);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  width: 90vw;
+  margin: 0 auto;
+  gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-xxs);
+}
+.hamburger-menu {
+  display: none;
+}
+.header-logo {
+  width: clamp(3.5rem, 7.5rem, 9.5rem);
+}
+/** header search bar **/
+.search-bar-box {
+  padding: 0.1rem;
+  border: 1px solid var(--header-item-grey-color);
+  border-radius: 3rem;
+  width: clamp(16rem, 30rem, 32rem);
+}
+.search-bar {
+  flex-grow: 1;
+  border-radius: 3rem;
+  padding-left: var(--spacing-xs);
+}
+.search-bar-box i {
+  padding: 0.6rem;
+  border-radius: var(--border-rd-round);
+  margin-right: 0.3rem;
+}
+.search-bar-box i:hover {
+  cursor: pointer;
+  background-color: var(--search-icon-hover-color);
+}
+/** header nav **/
+.nav-list,
+.responsive-header-links {
+  gap: var(--spacing-sm);
+}
+.nav-list-for-tablets {
+  display: none;
+  gap: var(--spacing-sm);
+}
+.responsive-header-links {
+  display: none;
+}
+.list-item-box {
+  gap: var(--spacing-xxs);
+}
+.list-item-box:nth-child(5) {
+  gap: 0.1rem;
+}
+.list-item {
+  margin-top: 0.3rem;
+}
+.badge-counter {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.7rem;
+  background-color: var(--primary-color);
+  font-weight: bold;
+}
+.header-badge-icon {
+  margin-right: 0.6rem;
+  margin-top: 0.4rem;
+}
+.header-icon {
+  color: var(--header-item-grey-color);
+  font-size: var(--font-size-md);
+}
+.products-icon {
+  font-size: var(--font-size-xl);
+}
+.list-item {
+  color: var(--header-item-grey-color);
+}
+.list-item-box:hover > .badge > .header-icon,
+.list-item-box:hover > .list-item,
+.list-item-box:hover > .header-icon {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+@media only screen and (max-width: 900px) {
+  .search-bar-box {
+    display: none;
+  }
+  .nav-list {
+    display: none;
+  }
+  .nav-list-for-tablets {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .responsive-header-links {
+    display: flex;
+  }
+  .search-bar-box,
+  .nav-list {
+    display: none;
+  }
+  .header-logo {
+    width: 5.5rem;
+    margin-left: var(--spacing-sm);
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  .nav-list-for-tablets {
+    display: none;
+  }
+}
