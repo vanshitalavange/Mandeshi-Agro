@@ -1,0 +1,55 @@
+.page-footer {
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-xxl);
+  background-color: var(--footer-background-color);
+}
+.footer-details {
+  padding: var(--spacing-xs);
+  gap: var(--spacing-sm);
+}
+.footer-contents-wrapper {
+  width: 90vw;
+  margin: 0 auto;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) 0 var(--spacing-xxs) 0;
+  font-size: var(--font-size-sm);
+}
+.footer-bottom-text a {
+  background-color: var(--primary-color);
+  padding: 0 var(--spacing-xxs);
+  border-radius: var(--border-rd-sm);
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--white-color);
+  font-size: var(--font-size-xs);
+}
+.footer-logo {
+  width: clamp(3.5rem, 7.5rem, 9.5rem);
+}
+.footer-brand-details {
+  gap: 0.3rem;
+}
+.social-links {
+  gap: var(--spacing-xxs);
+}
+.footer-icon {
+  font-size: var(--font-size-lg);
+}
+.footer-nav-list {
+  gap: var(--spacing-xxs);
+}
+.email-input {
+  border-radius: var(--border-rd-sm);
+  padding: var(--spacing-xxs);
+  background-color: var(--white-color);
+}
+.email {
+  border-radius: var(--border-rd-sm);
+  width: fit-content;
+}
+.btn-join {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-rd-md);
+  margin: 0.2rem 0.2rem 0.2rem 0;
+  padding: var(--spacing-xxs) var(--spacing-xs);
+}
