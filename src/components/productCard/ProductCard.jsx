@@ -40,41 +40,41 @@ export const ProductCard = ({ product }) => {
   } = { ...product };
 
   return (
-    <div class="product-card flex-column">
-      <div class="product-img-container">
-        <img class="responsive-img" src={imgSrc} alt={productName} />
+    <div className="product-card flex-column">
+      <div className="product-img-container">
+        <img className="responsive-img" src={imgSrc} alt={productName} />
       </div>
-      <span class="wishlist">
-        <i class="fa fa-heart"></i>
+      <span className="wishlist">
+        <i className="fa fa-heart"></i>
       </span>
-      <div class="product-card-body flex-column">
-        <h3 class="product-title">{productName}</h3>
-        <div class="price-rating-wrapper flex-row justify-space-between">
-          <div class="product-price-container flex-row">
-            <h4 class="price">{price}</h4>
-            <h5 class="price-line-through align-end">{prevPrice}</h5>
+      <div className="product-card-body flex-column">
+        <h3 className="product-title">{productName}</h3>
+        <div className="price-rating-wrapper flex-row justify-space-between">
+          <div className="product-price-container flex-row">
+            <h4 className="price">{price}</h4>
+            <h5 className="price-line-through align-end">{prevPrice}</h5>
           </div>
-          <div class="card-rating flex-row">
-            <div class="flex-row align-center">
-              <span class="material-icons rating-icon"> star </span>
-              <span class="material-icons rating-icon"> star </span>
-              <span class="material-icons rating-icon"> star </span>
-              <span class="material-icons rating-icon">star_half</span>
-              <span class="material-icons rating-icon fs-16">star_border</span>
+          <div className="card-rating flex-row">
+            <div className="flex-row align-center">
+              <span className="material-icons rating-icon"> star </span>
+              <span className="material-icons rating-icon"> star </span>
+              <span className="material-icons rating-icon"> star </span>
+              <span className="material-icons rating-icon">star_half</span>
+              <span className="material-icons rating-icon fs-16">star_border</span>
             </div>
-            <p class="rating-count align-center">{ratingCount}</p>
+            <p className="rating-count align-center">{ratingCount}</p>
           </div>
         </div>
-        <div class="product-card-actions flex-row flex-wrap">
-          <div class="quantity-box flex-row">
+        <div className="product-card-actions flex-row flex-wrap">
+          <div className="quantity-box flex-row">
             <button
               onClick={() => decrementQuantity(_id)}
-              class="btn-decrement"
+              className="btn-decrement"
             >
               -
             </button>
             <input
-              class="product-quantity"
+              className="product-quantity"
               type="number"
               name="quantity"
               value={userSetQuantity}
@@ -82,13 +82,13 @@ export const ProductCard = ({ product }) => {
             />
             <button
               onClick={() => incrementQuantity(_id)}
-              class="btn-increment"
+              className="btn-increment"
             >
               +
             </button>
           </div>
-          <a href="#" class="btn-add-cart flex-row-center">
-            <i class="fa fa-shopping-cart"></i>
+          <a href="#" className="btn-add-cart flex-row-center">
+            <i className="fa fa-shopping-cart"></i>
             ADD TO CART
           </a>
         </div>
