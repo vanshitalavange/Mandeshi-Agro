@@ -3,38 +3,39 @@ import { Filters } from "../../components/filters/Filters";
 import { useProductQuantity } from "../../contexts/product-quantity-context";
 import { ProductCard } from "../../components/productCard/ProductCard";
 export function Products() {
-  const { updatedProducts, setUpdatedProducts } = useProductQuantity();
+  const { updatedProducts } = useProductQuantity();
   return (
-    <div class="page-main">
+    <div class="products-page-main">
       <Filters />
       <section class="products">
-{updatedProducts.map(
-        ({
-          _id,
-          productName,
-          price,
-          prevPrice,
-          imgSrc,
-          bestDeal,
-          ratingCount,
-          userSetQuantity,
-        }) => {
-          return (
-            <ProductCard
-              product={{
-                _id,
-                productName,
-                price,
-                prevPrice,
-                imgSrc,
-                bestDeal,
-                ratingCount,
-                userSetQuantity,
-              }}
-            />
-          );
-        }
-      )}</section>
+        {updatedProducts.map(
+          ({
+            _id,
+            productName,
+            price,
+            prevPrice,
+            imgSrc,
+            bestDeal,
+            ratingCount,
+            userSetQuantity,
+          }) => {
+            return (
+              <ProductCard
+                product={{
+                  _id,
+                  productName,
+                  price,
+                  prevPrice,
+                  imgSrc,
+                  bestDeal,
+                  ratingCount,
+                  userSetQuantity,
+                }}
+              />
+            );
+          }
+        )}
+      </section>
     </div>
   );
 }
