@@ -53,3 +53,7 @@
 body {
   margin-top: var(--spacing-xxs);
 }
+/** overriding component library styles **/
+h3,h4,h5{
+  padding-top:0;
+}

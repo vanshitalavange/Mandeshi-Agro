@@ -4,6 +4,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { NavbarProvider } from "./contexts/navbar-context";
+import { ProductQuantityProvider } from "./contexts/product-quantity-context";
 
 // Call make Server
 makeServer();
@@ -12,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <NavbarProvider>
-        <App />
+        <ProductQuantityProvider>
+          <App />
+        </ProductQuantityProvider>
       </NavbarProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -1,0 +1,60 @@
+/* ----- main styles ------ **/
+.page-main {
+  width: 90vw;
+  margin: var(--spacing-lg) auto;
+}
+/** banner **/
+.hero-img {
+  border-radius: var(--border-rd-xl);
+}
+/** best deals **/
+.best-deals {
+  margin-top: var(--spacing-xl);
+  position: relative;
+}
+.best-deals-cards-wrapper {
+  padding: var(--spacing-xs) var(--spacing-xxs);
+  margin-top: var(--spacing-xs);
+  display: grid;
+  grid-template-columns: repeat(4, 16.5rem);
+  gap: var(--spacing-sm);
+}
+/** product categories **/
+.categories {
+  margin-top: var(--spacing-xl);
+}
+.section-title {
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--title-border-bottom-color);
+}
+.categories-cards-wrapper {
+  margin-top: var(--spacing-sm);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, auto));
+  gap: var(--spacing-sm);
+}
+.product-category {
+  padding: var(--spacing-md);
+  border-radius: var(--border-rd-lg);
+  gap: var(--spacing-xxs);
+  box-shadow: 1px 3px 10px rgba(54, 53, 53, 0.1);
+}
+.product-category:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.2s ease-in;
+}
+.category-img {
+  width: 6rem;
+}
+
+@media only screen and (min-width: 1300px) {
+  html {
+    font-size: 110%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  html {
+    font-size: 120%;
+  }
+}
