@@ -1,0 +1,20 @@
+/* main styles */
+.page-main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0 var(--spacing-sm);
+  width: 90vw;
+  margin: var(--spacing-md) auto;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 16.5rem));
+  gap: var(--spacing-sm);
+  padding: 0 0 var(--spacing-xs) 0;
+}
+@media only screen and (max-width: 580px) {
+  .page-main {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}
