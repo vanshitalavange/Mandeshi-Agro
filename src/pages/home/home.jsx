@@ -6,23 +6,23 @@ import { useProductQuantity } from "../../contexts/product-quantity-context";
 export function Home() {
   const { updatedProducts } = useProductQuantity();
   return (
-    <main class="page-main">
-      <section class="hero">
+    <main className="page-main">
+      <section className="hero">
         <img
-          class="hero-img responsive-img"
+          className="hero-img responsive-img"
           src="assets/landing-page/ma_home_banner1.png"
           alt="mandeshi-agro-hero-image"
         />
       </section>
-      <section class="categories">
-        <h1 class="section-title text-centered">Our categories</h1>
-        <div class="categories-cards-wrapper">
+      <section className="categories">
+        <h1 className="section-title text-centered">Our categories</h1>
+        <div className="categories-cards-wrapper">
           {categories.map(({ categoryName, imgSrc }) => {
             return (
               <Link to="/products">
-                <div class="product-category flex-col-center">
+                <div className="product-category flex-col-center">
                   <img
-                    class="category-img responsive-img"
+                    className="category-img responsive-img"
                     src={imgSrc}
                     alt={categoryName}
                   />
@@ -33,9 +33,9 @@ export function Home() {
           })}
         </div>
       </section>
-      <section class="best-deals">
-        <h1 class="section-title text-centered">Best deals</h1>
-        <div class="best-deals-cards-wrapper">
+      <section className="best-deals">
+        <h1 className="section-title text-centered">Best deals</h1>
+        <div className="best-deals-cards-wrapper">
           {updatedProducts.map(
             ({
               _id,
