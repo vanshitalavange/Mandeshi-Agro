@@ -1,10 +1,4 @@
 import { v4 as uuid } from "uuid";
-
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
-
 export const products = [
   {
     _id: uuid(),
@@ -12,10 +6,10 @@ export const products = [
     price: "₹10",
     prevPrice: "₹20",
     imgSrc: "assets/products/lemon.png",
-    inStock:true,
-    bestDeal:true,
-    ratingCount:13,
-    quantityCount:1
+    inStock: true,
+    bestDeal: true,
+    ratingCount: 13,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -23,9 +17,10 @@ export const products = [
     price: "₹25",
     prevPrice: "₹30",
     imgSrc: "assets/products/apple.png",
-    inStock:true,
-    bestDeal:true,
-    ratingCount:15
+    inStock: true,
+    bestDeal: true,
+    ratingCount: 15,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -33,9 +28,10 @@ export const products = [
     price: "₹30",
     prevPrice: "₹35",
     imgSrc: "assets/products/chilli.png",
-    inStock:true,
-    bestDeal:true,
-    ratingCount:11
+    inStock: true,
+    bestDeal: true,
+    ratingCount: 11,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -43,9 +39,10 @@ export const products = [
     price: "₹15",
     prevPrice: "₹20",
     imgSrc: "assets/products/beetroot.png",
-    inStock:true,
-    bestDeal:false,
-    ratingCount:6
+    inStock: true,
+    bestDeal: false,
+    ratingCount: 6,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -53,9 +50,10 @@ export const products = [
     price: "₹30",
     prevPrice: "₹40",
     imgSrc: "assets/products/banana.png",
-    inStock:true,
-    bestDeal:false,
-    ratingCount:8
+    inStock: true,
+    bestDeal: false,
+    ratingCount: 8,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -63,9 +61,10 @@ export const products = [
     price: "₹620",
     prevPrice: "₹650",
     imgSrc: "assets/products/danedar-ghee.png",
-    inStock:true,
-    bestDeal:false,
-    ratingCount:17
+    inStock: true,
+    bestDeal: false,
+    ratingCount: 17,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -73,9 +72,10 @@ export const products = [
     price: "₹40",
     prevPrice: "₹50",
     imgSrc: "assets/products/green-peas.png",
-    inStock:true,
-    bestDeal:false,
-    ratingCount:15
+    inStock: true,
+    bestDeal: false,
+    ratingCount: 15,
+    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -83,9 +83,10 @@ export const products = [
     price: "₹1575",
     prevPrice: "₹1685",
     imgSrc: "assets/products/A2-ghee.png",
-    inStock:true,
-    bestDeal:true,
-    ratingCount:19
+    inStock: true,
+    bestDeal: true,
+    ratingCount: 19,
+    userSetQuantity: 1
   }
 ];
 
