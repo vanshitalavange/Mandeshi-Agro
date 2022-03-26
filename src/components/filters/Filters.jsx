@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Filters.css";
 
 export const Filters = () => {
@@ -14,7 +14,7 @@ export const Filters = () => {
       setFiltersClassName("filters-wrapper flex-column");
     }
   };
-  window.addEventListener("resize", checkDeviceWidth);
+  useEffect(() => window.addEventListener("resize", checkDeviceWidth), []);
   const showFilters = () => {
     setFiltersClassName(
       filtersClassName ===
