@@ -36,33 +36,9 @@ export function Home() {
       <section className="best-deals">
         <h1 className="section-title text-centered">Best deals</h1>
         <div className="best-deals-cards-wrapper">
-          {updatedProducts.map(
-            ({
-              _id,
-              productName,
-              price,
-              prevPrice,
-              imgSrc,
-              bestDeal,
-              ratingCount,
-              userSetQuantity,
-            }) => {
-              return bestDeal ? (
-                <ProductCard
-                  product={{
-                    _id,
-                    productName,
-                    price,
-                    prevPrice,
-                    imgSrc,
-                    bestDeal,
-                    ratingCount,
-                    userSetQuantity,
-                  }}
-                />
-              ) : null;
-            }
-          )}
+          {updatedProducts.map((product) => {
+            return product.bestDeal ? <ProductCard product={product} /> : null;
+          })}
         </div>
       </section>
     </main>

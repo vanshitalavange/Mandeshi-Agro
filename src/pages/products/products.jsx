@@ -8,33 +8,9 @@ export function Products() {
     <div class="products-page-main">
       <Filters />
       <section class="products">
-        {updatedProducts.map(
-          ({
-            _id,
-            productName,
-            price,
-            prevPrice,
-            imgSrc,
-            bestDeal,
-            ratingCount,
-            userSetQuantity,
-          }) => {
-            return (
-              <ProductCard
-                product={{
-                  _id,
-                  productName,
-                  price,
-                  prevPrice,
-                  imgSrc,
-                  bestDeal,
-                  ratingCount,
-                  userSetQuantity,
-                }}
-              />
-            );
-          }
-        )}
+        {updatedProducts.map((product) => {
+          return <ProductCard product={product} />;
+        })}
       </section>
     </div>
   );
