@@ -44,11 +44,11 @@ export const Filters = () => {
           <div className="filter-category-wrapper flex-column">
             <h4 className="filter-heading">PRICE</h4>
             <label for="price-range" className="flex-row justify-space-between">
-              <span>₹170</span>
-              <span>₹700</span>
-              <span>₹2500</span>
+              <span>₹5</span>
+              <span>₹678</span>
+              <span>₹1575</span>
             </label>
-            <input type="range" className="price-range" />
+            <input onChange={(event) =>console.log(event.target.value)} min="5" max="1575" type="range" className="price-range" />
           </div>
           <div className="filter-category-wrapper flex-column">
             <h4 className="filter-heading">SORT BY</h4>
