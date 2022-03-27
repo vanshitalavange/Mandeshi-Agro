@@ -1,14 +1,14 @@
 import "./products.css";
 import { Filters } from "../../components/filters/Filters";
-import { useProductQuantity } from "../../contexts/product-quantity-context";
 import { ProductCard } from "../../components/productCard/ProductCard";
+import { useProduct } from "../../contexts/product-context";
 export function Products() {
-  const { updatedProducts } = useProductQuantity();
+  const {filteredProducts} = useProduct();
   return (
     <div class="products-page-main">
       <Filters />
       <section class="products">
-        {updatedProducts.map((product) => {
+        {filteredProducts.length === 0 ? <h1>No Products Found</h1> : filteredProducts.map((product) => {
           return <ProductCard product={product} />;
         })}
       </section>
