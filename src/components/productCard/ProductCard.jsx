@@ -3,7 +3,7 @@ import { useProductQuantity } from "../../contexts/product-quantity-context";
 
 export const ProductCard = ({ product }) => {
   const { updatedProducts, setUpdatedProducts } = useProductQuantity();
-
+  
   /** functions to increment and decrement quantity while adding products to cart **/
   const incrementQuantity = (productId) => {
     const productsWithUpdatedQuantity = updatedProducts.map((item) => {
@@ -35,6 +35,7 @@ export const ProductCard = ({ product }) => {
     price,
     prevPrice,
     imgSrc,
+    rating,
     ratingCount,
     userSetQuantity,
   } = { ...product };
@@ -48,22 +49,25 @@ export const ProductCard = ({ product }) => {
         <i className="fa fa-heart"></i>
       </span>
       <div className="product-card-body flex-column">
+        <div className="product-desc">
         <h3 className="product-title">{productName}</h3>
         <div className="price-rating-wrapper flex-row justify-space-between">
           <div className="product-price-container flex-row">
-            <h4 className="price">{price}</h4>
-            <h5 className="price-line-through align-end">{prevPrice}</h5>
+            <h4 className="price">₹{price}</h4>
+            <h5 className="price-line-through align-end">₹{prevPrice}</h5>
           </div>
           <div className="card-rating flex-row">
             <div className="flex-row align-center">
-              <span className="material-icons rating-icon"> star </span>
-              <span className="material-icons rating-icon"> star </span>
+              <span>{rating}</span>
+              <span className="material-icons rating-icon align-center"> star </span>
+              {/* <span className="material-icons rating-icon"> star </span>
               <span className="material-icons rating-icon"> star </span>
               <span className="material-icons rating-icon">star_half</span>
-              <span className="material-icons rating-icon fs-16">star_border</span>
+              <span className="material-icons rating-icon fs-16">star_border</span> */}
             </div>
-            <p className="rating-count align-center">{ratingCount}</p>
+            {/* <p className="rating-count align-center">{ratingCount}</p> */}
           </div>
+        </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
           <div className="quantity-box flex-row">
