@@ -1,9 +1,7 @@
 
 const getProductsInPriceRange = (productList, state) => {
     const { priceRange } = state;
-    console.log(priceRange);
     return productList.filter(product => Number(product.price) <= priceRange)
-
 }
 const getProductsWithAppliedRating = (productList, state) => {
     const { rating } = state;
@@ -22,4 +20,12 @@ const getSortedProducts = (productList, state) => {
     }
     return productList
 }
-export { getProductsInPriceRange, getProductsWithAppliedRating, getProductsInCategory, getSortedProducts };
+const compose = (filterState, ...args) => (products) => {
+    return args.reduce((acc, applyFilter) => {
+        return applyFilter(acc, filterState)
+    }, products)
+}
+const getFilteredProducts = (products, filterState) => {
+    return compose(filterState, getProductsInPriceRange, getProductsWithAppliedRating, getProductsInCategory, getSortedProducts)(products)
+}
+export { getFilteredProducts };
