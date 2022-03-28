@@ -1,3 +1,4 @@
+import { defaultFilters } from "../../contexts/product-context"
 export const productsReducer = (state, action) => {
     switch (action.type) {
         case "LOW_TO_HIGH": return { ...state, lowToHigh: action.payload, highToLow: false }
@@ -13,16 +14,7 @@ export const productsReducer = (state, action) => {
             }
         }
         case "PRICE_RANGE": return { ...state, priceRange: action.payload }
-        case "CLEAR_ALL": return {
-            priceRange: 1575,
-            lowToHigh: false,
-            highToLow: false,
-            rating: "",
-            categoryState: {
-                organicFruits: false, organicVegetables: false, organicSpices: false, organicGroceries: false, organicDairy: false, organicOils: false
-            },
-            productsInCategory: []
-        }
+        case "CLEAR_ALL": return { ...defaultFilters }
         default: return state
     }
 }
