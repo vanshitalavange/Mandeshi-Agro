@@ -15,9 +15,14 @@
 .best-deals-cards-wrapper {
   padding: var(--spacing-xs) var(--spacing-xxs);
   margin-top: var(--spacing-xs);
-  display: grid;
-  grid-template-columns: repeat(4, 16.5rem);
+  display: flex;
+  width:100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, 16.5rem); */
   gap: var(--spacing-sm);
+
 }
 /** product categories **/
 .categories {

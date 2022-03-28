@@ -12,7 +12,9 @@
   column-gap: var(--spacing-xs);
   justify-content: space-evenly;
   padding: 0 0 var(--spacing-xs) 0;
+  width:100%
 }
+
 @media only screen and (max-width: 580px) {
   .page-main {
     grid-template-columns: 1fr;

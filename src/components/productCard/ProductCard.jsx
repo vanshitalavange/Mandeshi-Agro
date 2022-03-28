@@ -1,41 +1,13 @@
 import "./ProductCard.css";
-import { useProductQuantity } from "../../contexts/product-quantity-context";
 
 export const ProductCard = ({ product }) => {
-  const { updatedProducts, setUpdatedProducts } = useProductQuantity();
-
-  /** functions to increment and decrement quantity while adding products to cart **/
-  const incrementQuantity = (productId) => {
-    const productsWithUpdatedQuantity = updatedProducts.map((item) => {
-      if (item._id === productId) {
-        item.userSetQuantity = item.userSetQuantity + 1;
-      }
-      return item;
-    });
-
-    setUpdatedProducts(productsWithUpdatedQuantity);
-  };
-  const decrementQuantity = (productId) => {
-    const productsWithUpdatedQuantity = updatedProducts.map((item) => {
-      if (item._id === productId) {
-        item.userSetQuantity =
-          item.userSetQuantity !== 1
-            ? item.userSetQuantity - 1
-            : item.userSetQuantity;
-      }
-      return item;
-    });
-    setUpdatedProducts(productsWithUpdatedQuantity);
-  };
-
-  /**  product prop **/
   const {
     _id,
     productName,
     price,
     prevPrice,
     imgSrc,
-    ratingCount,
+    rating,
     userSetQuantity,
   } = { ...product };
 
@@ -48,27 +20,27 @@ export const ProductCard = ({ product }) => {
         <i className="fa fa-heart"></i>
       </span>
       <div className="product-card-body flex-column">
-        <h3 className="product-title">{productName}</h3>
-        <div className="price-rating-wrapper flex-row justify-space-between">
-          <div className="product-price-container flex-row">
-            <h4 className="price">{price}</h4>
-            <h5 className="price-line-through align-end">{prevPrice}</h5>
-          </div>
-          <div className="card-rating flex-row">
-            <div className="flex-row align-center">
-              <span className="material-icons rating-icon"> star </span>
-              <span className="material-icons rating-icon"> star </span>
-              <span className="material-icons rating-icon"> star </span>
-              <span className="material-icons rating-icon">star_half</span>
-              <span className="material-icons rating-icon fs-16">star_border</span>
+        <div className="product-desc">
+          <h3 className="product-title">{productName}</h3>
+          <div className="price-rating-wrapper flex-row justify-space-between">
+            <div className="product-price-container flex-row">
+              <h4 className="price">₹{price}</h4>
+              <h5 className="price-line-through align-end">₹{prevPrice}</h5>
             </div>
-            <p className="rating-count align-center">{ratingCount}</p>
+            <div className="card-rating flex-row">
+              <div className="flex-row align-center">
+                <span>{rating}</span>
+                <span className="material-icons rating-icon align-center">
+                  {" "}
+                  star{" "}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
           <div className="quantity-box flex-row">
             <button
-              onClick={() => decrementQuantity(_id)}
               className="btn-decrement"
             >
               -
@@ -81,7 +53,6 @@ export const ProductCard = ({ product }) => {
               min="1"
             />
             <button
-              onClick={() => incrementQuantity(_id)}
               className="btn-increment"
             >
               +
