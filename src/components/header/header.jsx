@@ -21,7 +21,7 @@ export function Header() {
         <div className="header-logo">
           <img
             className="responsive-img"
-            src="assets/ma_logo.png"
+            src="https://ik.imagekit.io/mandeshiagro/assets/ma_logo_Ldl4fONTR.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648266237941"
             alt="mandeshi-agro-logo"
           />
         </div>

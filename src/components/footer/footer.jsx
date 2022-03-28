@@ -8,15 +8,15 @@ export function Footer() {
           <div className="footer-brand-details flex-column">
             <div className="footer-logo">
               <Link to="/">
-                <img src="../assets/ma_logo.png" alt="brand-logo" />
+                <img src="https://ik.imagekit.io/mandeshiagro/assets/ma_logo_Ldl4fONTR.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648266237941" alt="brand-logo" />
               </Link>
             </div>
             <span>Copyright © 2022 Mandeshi Agro</span>
             <span>All rights reserved</span>
             <div className="social-links flex-row">
-              <img src="https://img.icons8.com/fluency/38/000000/instagram-new.png" />
-              <img src="https://img.icons8.com/fluency/38/000000/linkedin.png" />
-              <img src="https://img.icons8.com/fluency/38/000000/facebook-new.png" />
+              <img src="https://img.icons8.com/fluency/38/000000/instagram-new.png" alt="instagram-url"/>
+              <img src="https://img.icons8.com/fluency/38/000000/linkedin.png" alt="linkedin-url"/>
+              <img src="https://img.icons8.com/fluency/38/000000/facebook-new.png" alt="facebook-url"/>
             </div>
           </div>
           <div className="footer-nav-links">
