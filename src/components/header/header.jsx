@@ -1,8 +1,7 @@
-import "./header.css";
+import "./Header.css";
 import "../../App.css";
 import { Link } from "react-router-dom";
-import { ResponsiveNavbarForMobile } from "../ResponsiveNavbar/ResponsiveNavbar";
-import { ResponsiveNavbarForTablet } from "../ResponsiveNavbar/ResponsiveNavbar";
+import { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "../index";
 import { useNavbar } from "../../contexts/navbar-context";
 export function Header() {
   const { setShowResponsiveNavbarForMobile } = useNavbar();

@@ -1,5 +1,5 @@
 import { useAxios } from "../../utilities/useAxios";
-import { ProductCard } from "../productCard/ProductCard";
+import { ProductCard } from "../index";
 
 export const BestDeals = () => {
   let products = [];

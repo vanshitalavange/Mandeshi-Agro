@@ -1,4 +1,4 @@
-import { defaultFilters } from "../../contexts/product-context"
+import { defaultFilters } from "../contexts/product-context"
 export const productsReducer = (state, action) => {
     switch (action.type) {
         case "LOW_TO_HIGH": return { ...state, lowToHigh: action.payload, highToLow: false }

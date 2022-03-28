@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useNavbar } from "../../contexts/navbar-context";
+import { useNavbar } from "../../contexts/index";
 import "./ResponsiveNavbar.css";
 export function ResponsiveNavbarForMobile() {
   const { showResponsiveNavbarForMobile, setShowResponsiveNavbarForMobile } =

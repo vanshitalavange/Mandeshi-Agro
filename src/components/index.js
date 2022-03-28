@@ -1,4 +1,10 @@
-import { Footer } from "./footer/footer";
-import { Header } from "./header/header";
-
-export { Footer, Header };
+export { Header } from "./Header/Header"
+export { Footer } from "./Footer/Footer"
+export { Banner } from "./Banner/Banner"
+export { BestDeals } from "./BestDeals/BestDeals"
+export { CategoryItem } from "./CategoryItem/CategoryItem"
+export { CategoryList } from "./CategoryList/CategoryList"
+export { Filters } from "./Filters/Filters"
+export { ProductCard } from "./ProductCard/ProductCard"
+export { ProductListing } from "./ProductListing/ProductListing"
+export { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "./ResponsiveNavbar/ResponsiveNavbar"
