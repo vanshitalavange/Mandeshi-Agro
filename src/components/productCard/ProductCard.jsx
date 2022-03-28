@@ -39,25 +39,6 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
-          <div className="quantity-box flex-row">
-            <button
-              className="btn-decrement"
-            >
-              -
-            </button>
-            <input
-              className="product-quantity"
-              type="number"
-              name="quantity"
-              value={userSetQuantity}
-              min="1"
-            />
-            <button
-              className="btn-increment"
-            >
-              +
-            </button>
-          </div>
           <a href="#" className="btn-add-cart flex-row-center">
             <i className="fa fa-shopping-cart"></i>
             ADD TO CART

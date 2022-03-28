@@ -37,6 +37,7 @@
 
 .wishlist i {
   color: var(--product-card-grey-color);
+  font-size: 1.1rem;
 }
 .price-line-through {
   text-decoration: line-through;
@@ -61,6 +62,9 @@
 }
 .btn-add-cart i {
   font-size: var(--font-size-sm);
+}
+.product-card-actions .btn-add-cart {
+  padding:var(--spacing-xxs);
 }
 .btn-add-cart:hover {
   background-color: var(--secondary-color);
