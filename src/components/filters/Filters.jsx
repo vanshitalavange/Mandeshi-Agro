@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import "./Filters.css";
-import { useProduct } from "../../contexts/product-context";
+import { useFilters } from "../../contexts/product-context";
 
 export const Filters = () => {
-  const {state:filterState,dispatch:dispatchFilters} = useProduct();
+  const {filterState,dispatchFilters} = useFilters();
   const {lowToHigh,highToLow,categoryState,priceRange} = filterState;
   /** state used to toggle between responsive filter and normal filter **/
   const [filtersClassName, setFiltersClassName] = useState(
