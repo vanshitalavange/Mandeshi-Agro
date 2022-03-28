@@ -13,10 +13,11 @@ const getProductsInCategory = (productList, state) => {
 }
 const getSortedProducts = (productList, state) => {
     const { lowToHigh, highToLow } = state;
+    const temp = [...productList]
     if (lowToHigh) {
-        return productList.sort((a, b) => a.price - b.price)
+        return temp.sort((a, b) => a.price - b.price)
     } else if (highToLow) {
-        return productList.sort((a, b) => b.price - a.price)
+        return temp.sort((a, b) => b.price - a.price)
     }
     return productList
 }
