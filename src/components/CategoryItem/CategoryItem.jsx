@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useFilters } from "../../contexts/product-context";
+import { useFilters } from "../../contexts/index";
 export const CategoryItem = ({ category }) => {
   const { dispatchFilters } = useFilters();
   const navigate = useNavigate();

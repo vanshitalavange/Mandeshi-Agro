@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Filters.css";
-import { useFilters } from "../../contexts/product-context";
+import { useFilters } from "../../contexts/index";
 
 export const Filters = () => {
   const {filterState,dispatchFilters} = useFilters();

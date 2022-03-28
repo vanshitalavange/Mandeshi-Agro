@@ -3,8 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { NavbarProvider } from "./contexts/navbar-context";
-import { ProductProvider } from "./contexts/product-context";
+import { NavbarProvider, ProductProvider } from "./contexts/index"
 
 // Call make Server
 makeServer();
@@ -14,7 +13,7 @@ ReactDOM.render(
     <BrowserRouter>
       <NavbarProvider>
         <ProductProvider>
-            <App />
+          <App />
         </ProductProvider>
       </NavbarProvider>
     </BrowserRouter>

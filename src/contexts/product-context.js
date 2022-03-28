@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { productsReducer } from "../components/reducers/product-reducer";
+import { productsReducer } from "../reducers/product-reducer";
 const ProductContext = createContext();
 const defaultFilters = {
     priceRange: 1575,

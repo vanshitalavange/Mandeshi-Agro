@@ -1,5 +1,5 @@
 import { useAxios } from "../../utilities/useAxios";
-import { CategoryItem } from "../CategoryItem/CategoryItem";
+import { CategoryItem } from "../index";
 export const CategoryList = () => {
   let categories = [];
   const { loading, responseData, errorFlag } = useAxios("/api/categories");
