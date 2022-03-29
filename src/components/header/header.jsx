@@ -75,7 +75,7 @@ export function Header() {
               <li className="list-item align-center">Wishlist</li>
             </div>
           </Link>
-          <Link to="/auth">
+          <Link to="/login">
             <div className="list-item-box list-item-login flex-row">
               <i className="fa fa-user header-icon header-badge-icon align-end"></i>
               <li className="list-item align-center">Login</li>
