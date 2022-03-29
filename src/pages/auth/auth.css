@@ -19,7 +19,6 @@ label {
 }
 .login,
 .signup {
-  /* gap: var(--spacing-sm); */
   padding: var(--spacing-md) 4rem;
   background-color: var(--white-color);
   width: fit-content;
@@ -30,6 +29,7 @@ label {
 .login-form,
 .signup-form {
   gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
 }
 .input-field-wrapper {
   gap: var(--spacing-xxs);
