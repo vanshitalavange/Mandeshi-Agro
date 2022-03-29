@@ -82,6 +82,15 @@
   cursor: pointer;
   color: var(--primary-color);
 }
+.btn-logout{
+  color:var(--secondary-color);
+  border-radius:var(--border-rd-sm);
+  padding:0.2rem var(--spacing-xxs);
+  position: absolute;
+  top:4.3rem;
+  right:0;
+  background-color:#eaffb3;
+}
 @media only screen and (max-width: 900px) {
   .search-bar-box {
     display: none;

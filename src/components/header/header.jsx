@@ -1,10 +1,14 @@
 import "./Header.css";
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "../index";
-import { useNavbar } from "../../contexts/navbar-context";
+import { useNavbar, useAuth } from "../../contexts/index";
+import { useState } from "react";
 export function Header() {
+  const navigate = useNavigate();
   const { setShowResponsiveNavbarForMobile } = useNavbar();
+  const { isLoggedIn, setIsLoggedIn, userDetails } = useAuth();
+  const [showLogoutBtn, setShowLogoutBtn] = useState(false);
   return (
     <header className="page-header flex-row justify-space-between">
       <ResponsiveNavbarForMobile />
@@ -38,10 +42,30 @@ export function Header() {
             <div className="badge mobile-cart-icon">
               <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
               <span className="badge-counter badge-round badge-counter-right">
-                2
+                0
               </span>
             </div>
           </Link>
+          {isLoggedIn ? (
+            <i
+              onClick={() => {
+                showLogoutBtn
+                  ? setShowLogoutBtn(false)
+                  : setShowLogoutBtn(true);
+              }}
+              className="fa fa-user header-icon header-badge-icon"
+            ></i>
+          ) : null}
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              setIsLoggedIn(false);
+            }}
+            className="btn-logout display-none"
+            style={{ display: isLoggedIn && showLogoutBtn ? "block" : "none" }}
+          >
+            Logout
+          </button>
         </div>
         <ResponsiveNavbarForTablet />
         <ul className="nav-list flex-row">
@@ -58,7 +82,7 @@ export function Header() {
               <div className="badge">
                 <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
                 <span className="badge-counter badge-round badge-counter-right">
-                  2
+                  0
                 </span>
               </div>
               <li className="list-item align-center">Cart</li>
@@ -69,18 +93,40 @@ export function Header() {
               <div className="badge">
                 <i className="fa fa-heart header-icon header-badge-icon"></i>
                 <span className="badge-counter badge-round badge-counter-right">
-                  4
+                  0
                 </span>
               </div>
               <li className="list-item align-center">Wishlist</li>
             </div>
           </Link>
-          <Link to="/login">
-            <div className="list-item-box list-item-login flex-row">
-              <i className="fa fa-user header-icon header-badge-icon align-end"></i>
-              <li className="list-item align-center">Login</li>
-            </div>
-          </Link>
+          <div className="list-item-box list-item-login flex-row">
+            <i className="fa fa-user header-icon header-badge-icon"></i>
+            {isLoggedIn ? (
+              <li
+                onClick={() => navigate("/")}
+                className="list-item align-center"
+              >
+                {userDetails.firstName === "" ? "User" : userDetails.firstName}
+              </li>
+            ) : (
+              <li
+                onClick={() => navigate("/login")}
+                className="list-item align-center"
+              >
+                Login
+              </li>
+            )}
+          </div>
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              setIsLoggedIn(false);
+            }}
+            className="btn-logout display-none"
+            style={{ display: isLoggedIn ? "block" : "none" }}
+          >
+            Logout
+          </button>
         </ul>
       </nav>
     </header>
