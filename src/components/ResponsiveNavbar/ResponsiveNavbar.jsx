@@ -10,11 +10,11 @@ export function ResponsiveNavbarForMobile() {
     <div className="responsive-navbar flex-column">
       <button
         onClick={() => setShowResponsiveNavbarForMobile(false)}
-        class="btn-close-nav align-end"
+        className="btn-close-nav align-end"
       >
-        <i class="fa fa-close header-icon"></i>
+        <i className="fa fa-close header-icon"></i>
       </button>
-      <ul class="flex-column responsive-nav-list">
+      <ul className="flex-column responsive-nav-list">
         <Link to="/">
           <li
             onClick={() => setShowResponsiveNavbarForMobile(false)}
@@ -58,35 +58,35 @@ export function ResponsiveNavbarForTablet() {
   return (
     <ul className="nav-list-for-tablets flex-row">
       <li>
-        <i class="fa fa-search header-icon align-center"></i>
+        <i className="fa fa-search header-icon align-center"></i>
       </li>
       <Link to="/products">
         <li>
-          <span class="material-icons header-icon products-icon align-center">
+          <span className="material-icons header-icon products-icon align-center">
             inventory
           </span>
         </li>
       </Link>
       <Link to="/cart">
         <li>
-          <div class="badge">
-            <i class="fa fa-shopping-cart header-icon header-badge-icon"></i>
-            <span class="badge-counter badge-round badge-counter-right">0</span>
+          <div className="badge">
+            <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
+            <span className="badge-counter badge-round badge-counter-right">0</span>
           </div>
         </li>
       </Link>
       <Link to="/wishlist">
         <li>
-          <div class="badge">
-            <i class="fa fa-heart header-icon header-badge-icon"></i>
-            <span class="badge-counter badge-round badge-counter-right">0</span>
+          <div className="badge">
+            <i className="fa fa-heart header-icon header-badge-icon"></i>
+            <span className="badge-counter badge-round badge-counter-right">0</span>
           </div>
         </li>
       </Link>
       <li>
         <i
           onClick={() => (isLoggedIn ? navigate("/") : navigate("/login"))}
-          class="fa fa-user header-icon header-badge-icon align-end"
+          className="fa fa-user header-icon header-badge-icon align-end"
         ></i>
       </li>
       <button

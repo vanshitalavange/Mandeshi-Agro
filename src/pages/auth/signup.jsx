@@ -59,7 +59,7 @@ export const Signup = () => {
       <h2>Sign up</h2>
       <form onSubmit={submitSignupForm} className="signup-form flex-column">
         <div className="input-field-wrapper flex-column">
-          <label for="first-name">First Name</label>
+          <label htmlFor="first-name">First Name</label>
           <input
             onChange={(event) => setDetails(event)}
             id="first-name"
@@ -71,7 +71,7 @@ export const Signup = () => {
           />
         </div>
         <div className="input-field-wrapper flex-column">
-          <label for="last-name">Last Name</label>
+          <label htmlFor="last-name">Last Name</label>
           <input
             onChange={(event) => setDetails(event)}
             id="last-name"
@@ -83,7 +83,7 @@ export const Signup = () => {
           />
         </div>
         <div className="input-field-wrapper flex-column">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             onChange={(event) => setDetails(event)}
             id="email"
@@ -95,7 +95,7 @@ export const Signup = () => {
           />
         </div>
         <div className="input-field-wrapper flex-column">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <div class="input-box flex-row">
             <input
               onChange={(event) => setDetails(event)}
@@ -126,8 +126,8 @@ export const Signup = () => {
           </div>
         </div>
         <div className="input-field-wrapper flex-column">
-          <label for="confirm-password">Confirm Password</label>
-          <div class="input-box flex-row">
+          <label htmlFor="confirm-password">Confirm Password</label>
+          <div className="input-box flex-row">
             <input
               onChange={(event) => setDetails(event)}
               id="confirm-password"

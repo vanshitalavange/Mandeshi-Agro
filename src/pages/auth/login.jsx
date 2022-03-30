@@ -44,7 +44,7 @@ export const Login = () => {
       <h2>Sign in</h2>
       <form onSubmit={submitLoginForm} className="login-form flex-column">
         <div className="input-field-wrapper flex-column">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             onChange={(event) => setDetails(event)}
             id="email"
@@ -56,7 +56,7 @@ export const Login = () => {
           />
         </div>
         <div className="input-field-wrapper flex-column">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <div className="input-box flex-row">
             <input
               onChange={(event) => setDetails(event)}
@@ -102,7 +102,7 @@ export const Login = () => {
         <span className="material-icons btn-icon"> east </span>
         <button className="icon-btn icon-btn-logout">Sign in as a Guest</button>
       </div>
-      <p class="msg">
+      <p className="msg">
         Don't have an account?{" "}
         <Link to="/signup" className="link-to-option">
           Signup here
