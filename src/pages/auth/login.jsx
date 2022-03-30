@@ -1,6 +1,6 @@
 import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/index";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
