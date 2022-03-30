@@ -12,7 +12,7 @@ export function Products() {
   }
   const filteredProducts = getFilteredProducts(products, filterState);
   return (
-    <div class="products-page-main">
+    <div className="products-page-main">
       <Filters />
       <ProductListing
         products={filteredProducts}

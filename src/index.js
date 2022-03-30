@@ -4,6 +4,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { NavbarProvider, ProductProvider } from "./contexts/index"
+import { AuthProvider } from "./contexts/index";
 
 // Call make Server
 makeServer();
@@ -11,11 +12,13 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavbarProvider>
-        <ProductProvider>
-          <App />
-        </ProductProvider>
-      </NavbarProvider>
+      <AuthProvider>
+        <NavbarProvider>
+          <ProductProvider>
+            <App />
+          </ProductProvider>
+        </NavbarProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

@@ -32,7 +32,7 @@ export const Filters = () => {
       <div className="responsive-filters flex-row">
         Sort by filters
         <button onClick={() => showFilters()}>
-          <span class="material-icons arrow-drop-down">arrow_drop_down</span>
+          <span className="material-icons arrow-drop-down">arrow_drop_down</span>
         </button>
       </div>
       <div className={filtersClassName}>
