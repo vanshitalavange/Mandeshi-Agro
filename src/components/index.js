@@ -1,4 +1,4 @@
-export { Header } from "./Header/Header.jsx"
+export { Header } from "./Header/Header"
 export { Footer } from "./Footer/Footer"
 export { Banner } from "./Banner/Banner"
 export { BestDeals } from "./BestDeals/BestDeals"
