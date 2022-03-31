@@ -4,9 +4,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/index";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
+import { getFormInput } from "../../utilities/get-form-input";
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setIsLoggedIn, setUserDetails } = useAuth();
+  const { setIsLoggedIn, setUserDetails, userState, dispatchUserAction } =
+    useAuth();
   const navigate = useNavigate();
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
@@ -16,11 +18,6 @@ export const Login = () => {
   const guestCredentials = {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
-  };
-  const setDetails = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setLoginCredentials({ ...loginCredentials, [name]: value });
   };
   const loginHandler = async (data) => {
     try {
@@ -46,7 +43,7 @@ export const Login = () => {
         <div className="input-field-wrapper flex-column">
           <label htmlFor="email">Email</label>
           <input
-            onChange={(event) => setDetails(event)}
+            onChange={(event) => getFormInput(event, setLoginCredentials)}
             id="email"
             className="form-input"
             name="email"
@@ -59,7 +56,7 @@ export const Login = () => {
           <label htmlFor="password">Password</label>
           <div className="input-box flex-row">
             <input
-              onChange={(event) => setDetails(event)}
+              onChange={(event) => getFormInput(event, setLoginCredentials)}
               id="password"
               className="form-input"
               name="password"

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/index";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
 import axios from "axios";
+import { getFormInput } from "../../utilities/get-form-input";
 export const Signup = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState({
@@ -19,18 +20,15 @@ export const Signup = () => {
     password: "",
     confirmPassword: "",
   });
-  const setDetails = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    if (name === "confirmPassword" && newUserDetails.password !== "") {
-      if (newUserDetails.password === value) {
+  const isPasswordMatchedChecker = (event) => {
+    const confirmPassword = event.target.value;
+    if (newUserDetails.password !== "") {
+      if (confirmPassword === newUserDetails.password) {
         setHelperMsg("Passwords matched 😃");
-        setNewUserDetails({ ...newUserDetails, [name]: value });
+        getFormInput(event, setNewUserDetails);
       } else {
         setHelperMsg("Passwords don't match 😞");
       }
-    } else {
-      setNewUserDetails({ ...newUserDetails, [name]: value });
     }
   };
   const signupHandler = async () => {
@@ -50,8 +48,6 @@ export const Signup = () => {
     event.preventDefault();
     if (helperMsg === "Passwords matched 😃") {
       signupHandler();
-    } else {
-      setHelperMsg("Please enter the same password");
     }
   };
   return (
@@ -61,7 +57,7 @@ export const Signup = () => {
         <div className="input-field-wrapper flex-column">
           <label htmlFor="first-name">First Name</label>
           <input
-            onChange={(event) => setDetails(event)}
+            onChange={(event) => getFormInput(event, setNewUserDetails)}
             id="first-name"
             className="form-input"
             name="firstName"
@@ -73,7 +69,7 @@ export const Signup = () => {
         <div className="input-field-wrapper flex-column">
           <label htmlFor="last-name">Last Name</label>
           <input
-            onChange={(event) => setDetails(event)}
+            onChange={(event) => getFormInput(event, setNewUserDetails)}
             id="last-name"
             className="form-input"
             name="lastName"
@@ -85,7 +81,7 @@ export const Signup = () => {
         <div className="input-field-wrapper flex-column">
           <label htmlFor="email">Email</label>
           <input
-            onChange={(event) => setDetails(event)}
+            onChange={(event) => getFormInput(event, setNewUserDetails)}
             id="email"
             className="form-input"
             name="email"
@@ -96,9 +92,9 @@ export const Signup = () => {
         </div>
         <div className="input-field-wrapper flex-column">
           <label htmlFor="password">Password</label>
-          <div class="input-box flex-row">
+          <div className="input-box flex-row">
             <input
-              onChange={(event) => setDetails(event)}
+              onChange={(event) => getFormInput(event, setNewUserDetails)}
               id="password"
               className="form-input"
               name="password"
@@ -129,7 +125,7 @@ export const Signup = () => {
           <label htmlFor="confirm-password">Confirm Password</label>
           <div className="input-box flex-row">
             <input
-              onChange={(event) => setDetails(event)}
+              onChange={isPasswordMatchedChecker}
               id="confirm-password"
               className="form-input"
               name="confirmPassword"
