@@ -3,15 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../contexts/index";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
-import axios from "axios";
 import { getFormInput } from "../../utilities/get-form-input";
+import { signupHandler } from "../../services/auth-services/signup-service";
 export const Signup = () => {
   const navigate = useNavigate();
+
+  const { setUserState } = useAuth();
+
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-  const { setIsLoggedIn, setUserDetails } = useAuth();
+
   const [helperMsg, setHelperMsg] = useState("");
   const [newUserDetails, setNewUserDetails] = useState({
     firstName: "",
@@ -20,6 +23,7 @@ export const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+
   const isPasswordMatchedChecker = (event) => {
     const confirmPassword = event.target.value;
     if (newUserDetails.password !== "") {
@@ -31,25 +35,14 @@ export const Signup = () => {
       }
     }
   };
-  const signupHandler = async () => {
-    try {
-      const response = await axios.post("/api/auth/signup", newUserDetails);
-      if (response.status === 201) {
-        setIsLoggedIn(true);
-        setUserDetails(response.data.createdUser);
-        localStorage.setItem("token", response.data.encodedToken);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   const submitSignupForm = (event) => {
     event.preventDefault();
     if (helperMsg === "Passwords matched 😃") {
-      signupHandler();
+      signupHandler(newUserDetails, navigate, setUserState);
     }
   };
+
   return (
     <section className="signup flex-col-center">
       <h2>Sign up</h2>
@@ -94,7 +87,10 @@ export const Signup = () => {
           <label htmlFor="password">Password</label>
           <div className="input-box flex-row">
             <input
-              onChange={(event) => getFormInput(event, setNewUserDetails)}
+              onChange={(event) => {
+                getFormInput(event, setNewUserDetails);
+                setHelperMsg("");
+              }}
               id="password"
               className="form-input"
               name="password"

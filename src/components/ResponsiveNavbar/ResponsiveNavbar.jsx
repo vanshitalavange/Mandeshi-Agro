@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useNavbar, useAuth } from "../../contexts/index";
 import "./ResponsiveNavbar.css";
+import { logout } from "../../services/auth-services/logout-service";
 export function ResponsiveNavbarForMobile() {
-  const { isLoggedIn } = useAuth();
+  const {
+    userState: { loginStatus },
+  } = useAuth();
   const navigate = useNavigate();
   const { showResponsiveNavbarForMobile, setShowResponsiveNavbarForMobile } =
     useNavbar();
@@ -34,7 +37,7 @@ export function ResponsiveNavbarForMobile() {
         <li
           onClick={() => {
             setShowResponsiveNavbarForMobile(false);
-            isLoggedIn ? navigate("/") : navigate("/login");
+            loginStatus ? navigate("/") : navigate("/login");
           }}
           className="responsive-nav-list-item"
         >
@@ -53,7 +56,10 @@ export function ResponsiveNavbarForMobile() {
   ) : null;
 }
 export function ResponsiveNavbarForTablet() {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const {
+    userState: { loginStatus },
+    setUserState,
+  } = useAuth();
   const navigate = useNavigate();
   return (
     <ul className="nav-list-for-tablets flex-row">
@@ -71,7 +77,9 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">0</span>
+            <span className="badge-counter badge-round badge-counter-right">
+              0
+            </span>
           </div>
         </li>
       </Link>
@@ -79,23 +87,22 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-heart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">0</span>
+            <span className="badge-counter badge-round badge-counter-right">
+              0
+            </span>
           </div>
         </li>
       </Link>
       <li>
         <i
-          onClick={() => (isLoggedIn ? navigate("/") : navigate("/login"))}
+          onClick={() => (loginStatus ? navigate("/") : navigate("/login"))}
           className="fa fa-user header-icon header-badge-icon align-end"
         ></i>
       </li>
       <button
-        onClick={() => {
-          localStorage.removeItem("token");
-          setIsLoggedIn(false);
-        }}
+        onClick={() => logout(setUserState)}
         className="btn-logout display-none"
-        style={{ display: isLoggedIn ? "block" : "none" }}
+        style={{ display: loginStatus ? "block" : "none" }}
       >
         Logout
       </button>

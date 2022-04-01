@@ -4,10 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "../index";
 import { useNavbar, useAuth } from "../../contexts/index";
 import { useState } from "react";
+import { logout } from "../../services/auth-services/logout-service";
 export function Header() {
   const navigate = useNavigate();
   const { setShowResponsiveNavbarForMobile } = useNavbar();
-  const { isLoggedIn, setIsLoggedIn, userDetails } = useAuth();
+  const {
+    userState: { loginStatus, userDetails },
+    setUserState,
+  } = useAuth();
   const [showLogoutBtn, setShowLogoutBtn] = useState(false);
   return (
     <header className="page-header flex-row justify-space-between">
@@ -46,7 +50,7 @@ export function Header() {
               </span>
             </div>
           </Link>
-          {isLoggedIn ? (
+          {loginStatus ? (
             <i
               onClick={() => {
                 showLogoutBtn
@@ -57,12 +61,9 @@ export function Header() {
             ></i>
           ) : null}
           <button
-            onClick={() => {
-              localStorage.removeItem("token");
-              setIsLoggedIn(false);
-            }}
+            onClick={() => logout(setUserState)}
             className="btn-logout display-none"
-            style={{ display: isLoggedIn && showLogoutBtn ? "block" : "none" }}
+            style={{ display: loginStatus && showLogoutBtn ? "block" : "none" }}
           >
             Logout
           </button>
@@ -101,7 +102,7 @@ export function Header() {
           </Link>
           <div className="list-item-box list-item-login flex-row">
             <i className="fa fa-user header-icon header-badge-icon"></i>
-            {isLoggedIn ? (
+            {loginStatus ? (
               <li
                 onClick={() => navigate("/")}
                 className="list-item align-center"
@@ -118,12 +119,9 @@ export function Header() {
             )}
           </div>
           <button
-            onClick={() => {
-              localStorage.removeItem("token");
-              setIsLoggedIn(false);
-            }}
+            onClick={() => logout(setUserState)}
             className="btn-logout display-none"
-            style={{ display: isLoggedIn ? "block" : "none" }}
+            style={{ display: loginStatus ? "block" : "none" }}
           >
             Logout
           </button>
