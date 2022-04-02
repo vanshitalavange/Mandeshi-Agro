@@ -16,6 +16,7 @@
   --price-text-color: hsl(0, 1%, 22%);
   --required-field-indicator-color: hsl(0, 100%, 50%);
   --footer-background-color: hsl(0, 0%, 95.5%);
+  --item-wishlisted-color:hsl(7, 100%, 67%);
 
   /** spacing **/
   --spacing-xxs: 0.5rem;

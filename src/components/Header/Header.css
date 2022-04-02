@@ -57,14 +57,14 @@
   margin-top: 0.3rem;
 }
 .badge-counter {
-  padding: 0.1rem 0.3rem;
+  padding: 0.25rem 0.4rem;
   font-size: 0.7rem;
   background-color: var(--primary-color);
   font-weight: bold;
 }
 .header-badge-icon {
-  margin-right: 0.6rem;
-  margin-top: 0.4rem;
+  margin-right: 0.7rem;
+  margin-top: 0.5rem;
 }
 .header-icon {
   color: var(--header-item-grey-color);
