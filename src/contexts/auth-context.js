@@ -5,8 +5,15 @@ const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
   const [userState, setUserState] = useState({
     loginStatus: false,
+    authToken:"",
     userDetails: { firstName: "", cart: [], wishlist: [] }
   })
+  const authToken = localStorage.getItem('authToken');
+  useEffect(() => {
+    if (authToken) {
+      setUserState(userState => ({ ...userState, loginStatus: true,authToken }))
+    }
+  }, [authToken])
   return <AuthContext.Provider value={{ userState, setUserState }}>{children}</AuthContext.Provider>
 }
 

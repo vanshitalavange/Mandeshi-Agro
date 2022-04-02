@@ -4,8 +4,9 @@ import "./ResponsiveNavbar.css";
 import { logout } from "../../services/auth-services/logout-service";
 export function ResponsiveNavbarForMobile() {
   const {
-    userState: { loginStatus },
+    userState: { loginStatus, userDetails },
   } = useAuth();
+  const { wishlist } = userDetails;
   const navigate = useNavigate();
   const { showResponsiveNavbarForMobile, setShowResponsiveNavbarForMobile } =
     useNavbar();
@@ -48,7 +49,7 @@ export function ResponsiveNavbarForMobile() {
             onClick={() => setShowResponsiveNavbarForMobile(false)}
             className="responsive-nav-list-item"
           >
-            Wishlist
+            Wishlist {loginStatus ? `(${wishlist.length})` : `(0)`}
           </li>
         </Link>
       </ul>
@@ -56,10 +57,11 @@ export function ResponsiveNavbarForMobile() {
   ) : null;
 }
 export function ResponsiveNavbarForTablet() {
+  const { userState, setUserState } = useAuth();
   const {
-    userState: { loginStatus },
-    setUserState,
-  } = useAuth();
+    loginStatus,
+    userDetails: { wishlist },
+  } = userState;
   const navigate = useNavigate();
   return (
     <ul className="nav-list-for-tablets flex-row">
@@ -88,7 +90,7 @@ export function ResponsiveNavbarForTablet() {
           <div className="badge">
             <i className="fa fa-heart header-icon header-badge-icon"></i>
             <span className="badge-counter badge-round badge-counter-right">
-              0
+              {loginStatus ? wishlist.length : 0}
             </span>
           </div>
         </li>
