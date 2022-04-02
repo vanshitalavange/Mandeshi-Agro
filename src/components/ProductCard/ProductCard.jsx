@@ -1,23 +1,73 @@
 import "./ProductCard.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/index";
+import { addToWishlist, removeFromWishlist } from "../../services/index";
 
 export const ProductCard = ({ product }) => {
-  const {
-    _id,
-    productName,
-    price,
-    prevPrice,
-    imgSrc,
-    rating,
-    userSetQuantity,
-  } = { ...product };
+  const navigate = useNavigate();
 
+  const { userState, setUserState } = useAuth();
+  const { loginStatus, authToken, userDetails } = userState;
+  const { wishlist } = userDetails;
+
+  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+
+  const [isWishlisted, setIsWishlisted] = useState({
+    value: false,
+    class: "not-wishlisted",
+  });
+
+  const isProductInWishlist = (wishlist, product) => {
+    const result = wishlist.filter((item) => item._id === product._id);
+    return result.length === 0 ? false : true;
+  };
+
+  useEffect(() => {
+    if (loginStatus) {
+      setIsWishlisted(
+        isProductInWishlist(wishlist, product)
+          ? { value: true, class: "wishlisted" }
+          : { value: false, class: "not-wishlisted" }
+      );
+    } else {
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+    }
+  }, [loginStatus, product]);
+
+  const toggleWishList = () => {
+    if (!isWishlisted.value) {
+      setIsWishlisted({ value: true, class: "wishlisted" });
+      const addToWishlistAPIResponse = addToWishlist(authToken, _id);
+      addToWishlistAPIResponse.then((data) => {
+        setUserState({
+          ...userState,
+          userDetails: { ...userDetails, wishlist: data },
+        });
+      });
+    } else {
+      const removeFromWishlistAPIResponse = removeFromWishlist(authToken, _id);
+      removeFromWishlistAPIResponse.then((data) =>
+        setUserState({
+          ...userState,
+          userDetails: { ...userDetails, wishlist: data },
+        })
+      );
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+    }
+  };
   return (
     <div className="product-card flex-column">
       <div className="product-img-container">
         <img className="responsive-img" src={imgSrc} alt={productName} />
       </div>
-      <span className="wishlist">
-        <i className="fa fa-heart"></i>
+      <span
+        onClick={() => {
+          loginStatus ? toggleWishList() : navigate("/login");
+        }}
+        className="wishlist"
+      >
+        <i className={`fa fa-heart ${isWishlisted.class}`}></i>
       </span>
       <div className="product-card-body flex-column">
         <div className="product-desc">
