@@ -6,12 +6,14 @@ import { useNavbar, useAuth } from "../../contexts/index";
 import { useState } from "react";
 import { logout } from "../../services/auth-services/logout-service";
 export function Header() {
+ 
+  const { userState, setUserState } = useAuth();
+  const { loginStatus,  userDetails } = userState;
+  const { wishlist } = userDetails;
   const navigate = useNavigate();
+
   const { setShowResponsiveNavbarForMobile } = useNavbar();
-  const {
-    userState: { loginStatus, userDetails },
-    setUserState,
-  } = useAuth();
+
   const [showLogoutBtn, setShowLogoutBtn] = useState(false);
   return (
     <header className="page-header flex-row justify-space-between">
@@ -94,7 +96,7 @@ export function Header() {
               <div className="badge">
                 <i className="fa fa-heart header-icon header-badge-icon"></i>
                 <span className="badge-counter badge-round badge-counter-right">
-                  0
+                  {loginStatus ? wishlist.length : 0}
                 </span>
               </div>
               <li className="list-item align-center">Wishlist</li>
