@@ -12,7 +12,7 @@ export const BestDeals = () => {
       <h1 className="section-title text-centered">Best deals</h1>
       <div className="best-deals-cards-wrapper">
         {products.map((product) => {
-          return product.bestDeal ? <ProductCard product={product} /> : null;
+          return product.bestDeal ? <ProductCard key={product._id} product={product} /> : null;
         })}
       </div>
     </section>
