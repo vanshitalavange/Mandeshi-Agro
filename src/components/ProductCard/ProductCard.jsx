@@ -1,30 +1,31 @@
 import "./ProductCard.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/index";
-import {
-  addToWishlist,
-  removeFromWishlist,
-  addToCart,
-} from "../../services/index";
+import { useAuth, useWishlist } from "../../contexts/index";
+import { addToWishlist, removeFromWishlist } from "../../services/index";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
-  const { userState, setUserState } = useAuth();
-  const { loginStatus, authToken, userDetails } = userState;
-  const { wishlist } = userDetails;
-
-  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+  const { userState } = useAuth();
+  const { loginStatus, authToken } = userState;
+  const { wishlist, dispatchWishlist, isProductInWishlist } = useWishlist();
 
   const [isWishlisted, setIsWishlisted] = useState({
     value: false,
     class: "not-wishlisted",
   });
 
-  const isProductInWishlist = (wishlist, product) => {
-    const result = wishlist.filter((item) => item._id === product._id);
-    return result.length === 0 ? false : true;
+  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+
+  const toggleWishList = () => {
+    if (!isWishlisted.value) {
+      setIsWishlisted({ value: true, class: "wishlisted" });
+      addToWishlist(authToken, _id, dispatchWishlist);
+    } else {
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+      removeFromWishlist(authToken, _id, dispatchWishlist);
+    }
   };
 
   useEffect(() => {
@@ -38,33 +39,6 @@ export const ProductCard = ({ product }) => {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
     }
   }, [loginStatus, product]);
-
-  const toggleWishList = () => {
-    if (!isWishlisted.value) {
-      setIsWishlisted({ value: true, class: "wishlisted" });
-      const addToWishlistAPIResponse = addToWishlist(authToken, _id);
-      addToWishlistAPIResponse.then((data) => {
-        setUserState({
-          ...userState,
-          userDetails: { ...userDetails, wishlist: data },
-        });
-      });
-    } else {
-      const removeFromWishlistAPIResponse = removeFromWishlist(authToken, _id);
-      removeFromWishlistAPIResponse.then((data) =>
-        setUserState({
-          ...userState,
-          userDetails: { ...userDetails, wishlist: data },
-        })
-      );
-      setIsWishlisted({ value: false, class: "not-wishlisted" });
-    }
-  };
-
-  const [cartState, setCartState] = useState({
-    action: "ADD TO CART",
-    navigationLink: "",
-  });
 
   return (
     <div className="product-card flex-column">
@@ -99,13 +73,10 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
-          <button
-            onClick={() => handleCart()}
-            className="btn-add-cart flex-row-center"
-          >
+          <a href="#" className="btn-add-cart flex-row-center">
             <i className="fa fa-shopping-cart"></i>
-            {cartState.action}
-          </button>
+            ADD TO CART
+          </a>
         </div>
       </div>
     </div>

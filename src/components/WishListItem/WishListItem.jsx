@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/index";
+import { useAuth, useWishlist } from "../../contexts/index";
 import { removeFromWishlist } from "../../services/index";
 export const WishListItem = ({ wishlistedProduct }) => {
   const { productName, imgSrc, price, prevPrice, rating, _id } =
     wishlistedProduct;
-  const { userState, setUserState } = useAuth();
-  const { authToken, userDetails } = userState;
+  const {
+    userState: { authToken },
+  } = useAuth();
+  const { dispatchWishlist } = useWishlist();
 
   return (
     <div className="product-card flex-column">
@@ -14,16 +16,7 @@ export const WishListItem = ({ wishlistedProduct }) => {
       </div>
       <span
         onClick={() => {
-          const removeFromWishlistAPIResponse = removeFromWishlist(
-            authToken,
-            _id
-          );
-          removeFromWishlistAPIResponse.then((data) =>
-            setUserState({
-              ...userState,
-              userDetails: { ...userDetails, wishlist: data },
-            })
-          );
+          removeFromWishlist(authToken, _id, dispatchWishlist);
         }}
         className="remove-from-wishlist"
       >

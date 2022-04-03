@@ -1,12 +1,12 @@
 import axios from "axios"
-export const removeFromWishlist = async (encodedToken, productId) => {
+export const removeFromWishlist = async (encodedToken, productId, dispatchWishlist) => {
     try {
-        const response = await axios.delete(`/api/user/wishlist/${productId}`, {
+        const { data } = await axios.delete(`/api/user/wishlist/${productId}`, {
             headers: {
                 authorization: encodedToken
             }
         })
-        return response.data.wishlist
+        dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: data.wishlist })
     } catch (error) {
         console.log(error)
     }

@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useNavbar, useAuth } from "../../contexts/index";
+import { useNavbar, useAuth, useWishlist } from "../../contexts/index";
 import "./ResponsiveNavbar.css";
 import { logout } from "../../services/auth-services/logout-service";
 export function ResponsiveNavbarForMobile() {
   const {
-    userState: { loginStatus, userDetails },
+    userState: { loginStatus },
   } = useAuth();
-  const { wishlist } = userDetails;
+  const { wishlist } = useWishlist();
   const navigate = useNavigate();
   const { showResponsiveNavbarForMobile, setShowResponsiveNavbarForMobile } =
     useNavbar();
@@ -49,7 +49,7 @@ export function ResponsiveNavbarForMobile() {
             onClick={() => setShowResponsiveNavbarForMobile(false)}
             className="responsive-nav-list-item"
           >
-            Wishlist {loginStatus ? `(${wishlist.length})` : `(0)`}
+            Wishlist {loginStatus && `(${wishlist.length})`}
           </li>
         </Link>
       </ul>
@@ -58,19 +58,17 @@ export function ResponsiveNavbarForMobile() {
 }
 export function ResponsiveNavbarForTablet() {
   const { userState, setUserState } = useAuth();
-  const {
-    loginStatus,
-    userDetails: { wishlist },
-  } = userState;
+  const { loginStatus } = userState;
   const navigate = useNavigate();
+  const { wishlist } = useWishlist();
   return (
     <ul className="nav-list-for-tablets flex-row">
       <li>
-        <i className="fa fa-search header-icon align-center"></i>
+        <i className="fa fa-search header-icon header-badge-icon align-end"></i>
       </li>
       <Link to="/products">
         <li>
-          <span className="material-icons header-icon products-icon align-center">
+          <span className="material-icons header-icon header-badge-icon align-end">
             inventory
           </span>
         </li>
@@ -79,9 +77,11 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">
-              0
-            </span>
+            {loginStatus && (
+              <span className="badge-counter badge-round badge-counter-right">
+                0
+              </span>
+            )}
           </div>
         </li>
       </Link>
@@ -89,9 +89,11 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-heart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">
-              {loginStatus ? wishlist.length : 0}
-            </span>
+            {loginStatus && (
+              <span className="badge-counter badge-round badge-counter-right">
+                {wishlist.length}
+              </span>
+            )}
           </div>
         </li>
       </Link>

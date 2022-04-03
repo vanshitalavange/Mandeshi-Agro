@@ -14,9 +14,9 @@ ReactDOM.render(
       <AuthProvider>
         <NavbarProvider>
           <ProductProvider>
-            <CartProvider>
+            <WishlistProvider>
               <App />
-            </CartProvider>
+            </WishlistProvider>
           </ProductProvider>
         </NavbarProvider>
       </AuthProvider>
