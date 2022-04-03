@@ -14,7 +14,7 @@ const WishlistProvider = ({ children }) => {
         if (authToken) {
             getWishlist(authToken, dispatchWishlist)
         }
-    }, [])
+    }, [authToken])
 
     const isProductInWishlist = (wishlist, product) => {
         return wishlist.some((item) => item._id === product._id);
