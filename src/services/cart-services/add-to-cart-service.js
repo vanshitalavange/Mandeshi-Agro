@@ -1,15 +1,12 @@
 import axios from "axios"
-import { getProducts } from "../product-services/get-products-service"
-export const addToCart = async (encodedToken, _id) => {
-    const allProducts = await getProducts()
-    const product = allProducts.find(product => product._id === _id)
+export const addToCart = async (encodedToken, product, dispatchCart) => {
     try {
         const { data } = await axios.post('/api/user/cart', { product }, {
             headers: {
                 authorization: encodedToken
             }
         })
-        return data.cart
+        dispatchCart({ type: "ADD_ITEM_TO_CART", payload: data.cart })
     } catch (error) {
         console.error(error)
     }
