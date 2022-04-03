@@ -21,6 +21,7 @@
   border-radius: var(--border-rd-sm);
   border: 1px solid rgb(228, 219, 219);
   padding: var(--spacing-xs);
+  position: relative;
 }
 .cart-product-img-container {
   width: 45%;
@@ -63,6 +64,7 @@
 .btn-remove-from-cart:hover {
   color: var(--white-color);
   background-color: var(--required-field-indicator-color);
+  border: 1px solid var(--required-field-indicator-color);
 }
 .cart-total {
   padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xs)
@@ -96,4 +98,15 @@
   background-color: var(--accent-color);
   color: var(--white-color);
   border-radius: var(--border-rd-xs);
-} 
+}
+.discount-container {
+  color: var(--white-color);
+  background-color: var(--required-field-indicator-color);
+  width: fit-content;
+  padding: 0.2rem 0.25rem;
+  border-top-right-radius: var(--border-rd-xs);
+  border-bottom-right-radius: var(--border-rd-xs);
+  position: absolute;
+  left: 0;
+  top: var(--spacing-xxs);
+}
