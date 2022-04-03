@@ -1,0 +1,99 @@
+.page-main {
+  width: 90vw;
+  margin: var(--spacing-md) auto var(--spacing-xl) auto;
+}
+.cart-title-container {
+  gap: var(--spacing-xxs);
+  margin-bottom: var(--spacing-sm);
+}
+.cart-title-container img {
+  width: 3rem;
+}
+.cart-wrapper {
+  gap: 4rem;
+}
+.cart-products {
+  gap: var(--spacing-xs);
+}
+.cart-product-card {
+  max-width: 26rem;
+  gap: var(--spacing-sm);
+  border-radius: var(--border-rd-sm);
+  border: 1px solid rgb(228, 219, 219);
+  padding: var(--spacing-xs);
+}
+.cart-product-img-container {
+  width: 45%;
+}
+.cart-product-card-body {
+  margin-top: var(--spacing-xxs);
+  width: 55%;
+  gap: var(--spacing-xxs);
+}
+.quantity-wrapper {
+  gap: var(--spacing-xs);
+}
+.price {
+  font-size: var(--font-size-sm);
+  color: var(--price-text-color);
+}
+.price-line-through {
+  font-size: var(--font-size-xs);
+  color: var(--price-text-color);
+}
+.cart-card-actions {
+  margin-top: var(--spacing-xxs);
+  gap: var(--spacing-xxs);
+}
+.btn-move-to-wishlist {
+  gap: var(--spacing-xxs);
+  padding: 0.35rem var(--spacing-xxs);
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-rd-xs);
+}
+.btn-move-to-wishlist:hover {
+  background-color: var(--secondary-color);
+}
+.btn-remove-from-cart {
+  padding: 0.35rem var(--spacing-xxs);
+  border: 1.2px solid var(--primary-color);
+  border-radius: var(--border-rd-xs);
+}
+.btn-remove-from-cart:hover {
+  color: var(--white-color);
+  background-color: var(--required-field-indicator-color);
+}
+.cart-total {
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xs)
+    var(--spacing-sm);
+  align-self: flex-start;
+  box-shadow: 1px 2px 8px rgb(228, 216, 216);
+  border-radius: var(--border-rd-sm);
+  width: 18rem;
+}
+.cart-total-heading {
+  padding-bottom: var(--spacing-xxs);
+  border-bottom: groove;
+}
+.cart-total-details {
+  gap: var(--spacing-xs);
+}
+.cart-summary {
+  padding: var(--spacing-xs) 0;
+  gap: var(--spacing-xxs);
+  border-bottom: groove;
+}
+.alert-discount {
+  position: sticky;
+  margin: 0;
+  padding: 0;
+  gap: var(--spacing-xxs);
+}
+.btn-place-order {
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-xxs);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  border-radius: var(--border-rd-xs);
+} 
