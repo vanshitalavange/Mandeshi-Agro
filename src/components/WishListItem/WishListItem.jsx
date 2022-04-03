@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
-import { useAuth, useWishlist } from "../../contexts/index";
-import { removeFromWishlist } from "../../services/index";
+import { useAuth, useWishlist, useCart } from "../../contexts/index";
+import {
+  removeFromWishlist,
+  addToCart,
+  updateProductQuantity,
+} from "../../services/index";
 export const WishListItem = ({ wishlistedProduct }) => {
   const { productName, imgSrc, price, prevPrice, rating, _id } =
     wishlistedProduct;
@@ -8,6 +11,18 @@ export const WishListItem = ({ wishlistedProduct }) => {
     userState: { authToken },
   } = useAuth();
   const { dispatchWishlist } = useWishlist();
+
+  const { cart, dispatchCart, isProductInCart } = useCart();
+
+  const moveToCartHandler = () => {
+    if (!isProductInCart(cart, wishlistedProduct)) {
+      addToCart(authToken, wishlistedProduct, dispatchCart);
+      removeFromWishlist(authToken, _id, dispatchWishlist);
+    } else {
+      updateProductQuantity(authToken, _id, "increment", dispatchCart);
+      removeFromWishlist(authToken, _id, dispatchWishlist);
+    }
+  };
 
   return (
     <div className="product-card flex-column">
@@ -40,13 +55,13 @@ export const WishListItem = ({ wishlistedProduct }) => {
           </div>
         </div>
         <div className="product-card-actions">
-          <Link
-            to="/cart"
+          <button
+            onClick={() => moveToCartHandler()}
             className="btn-add-cart btn-move-to-cart flex-row-center"
           >
             <i className="fa fa-shopping-cart"></i>
             MOVE TO CART
-          </Link>
+          </button>
         </div>
       </div>
     </div>
