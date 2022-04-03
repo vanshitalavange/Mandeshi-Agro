@@ -19,8 +19,7 @@ export const ProductCard = ({ product }) => {
   });
 
   const isProductInWishlist = (wishlist, product) => {
-    const result = wishlist.filter((item) => item._id === product._id);
-    return result.length === 0 ? false : true;
+    return wishlist.some((item) => item._id === product._id);
   };
 
   useEffect(() => {
