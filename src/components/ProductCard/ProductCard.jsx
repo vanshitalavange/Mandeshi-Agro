@@ -2,7 +2,11 @@ import "./ProductCard.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/index";
-import { addToWishlist, removeFromWishlist } from "../../services/index";
+import {
+  addToWishlist,
+  removeFromWishlist,
+  addToCart,
+} from "../../services/index";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -56,6 +60,12 @@ export const ProductCard = ({ product }) => {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
     }
   };
+
+  const [cartState, setCartState] = useState({
+    action: "ADD TO CART",
+    navigationLink: "",
+  });
+
   return (
     <div className="product-card flex-column">
       <div className="product-img-container">
@@ -89,10 +99,13 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
-          <a href="#" className="btn-add-cart flex-row-center">
+          <button
+            onClick={() => handleCart()}
+            className="btn-add-cart flex-row-center"
+          >
             <i className="fa fa-shopping-cart"></i>
-            ADD TO CART
-          </a>
+            {cartState.action}
+          </button>
         </div>
       </div>
     </div>
