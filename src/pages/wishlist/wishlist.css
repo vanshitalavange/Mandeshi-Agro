@@ -30,15 +30,6 @@
 .btn-move-to-cart {
   padding: var(--spacing-xxs);
 }
-.empty-wishlist{
-  margin-top:var(--spacing-sm);
-  align-items: center;
-  gap:var(--spacing-xs);
-}
-.btn-continue-shopping{
-  background-color: var(--primary-color);
-  color:var(--white-color);
-  padding:var(--spacing-xxs) var(--spacing-xs);
-  font-size:var(--font-size-sm);
-  border-radius:var(--border-rd-sm);
+.wish-count{
+  margin-bottom: 0.2rem;
 }
