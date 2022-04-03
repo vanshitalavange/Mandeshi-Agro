@@ -1,25 +1,31 @@
 import "./ProductCard.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/index";
+import { useAuth, useWishlist } from "../../contexts/index";
 import { addToWishlist, removeFromWishlist } from "../../services/index";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
-  const { userState, setUserState } = useAuth();
-  const { loginStatus, authToken, userDetails } = userState;
-  const { wishlist } = userDetails;
-
-  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+  const { userState } = useAuth();
+  const { loginStatus, authToken } = userState;
+  const { wishlist, dispatchWishlist, isProductInWishlist } = useWishlist();
 
   const [isWishlisted, setIsWishlisted] = useState({
     value: false,
     class: "not-wishlisted",
   });
 
-  const isProductInWishlist = (wishlist, product) => {
-    return wishlist.some((item) => item._id === product._id);
+  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+
+  const toggleWishList = () => {
+    if (!isWishlisted.value) {
+      setIsWishlisted({ value: true, class: "wishlisted" });
+      addToWishlist(authToken, _id, dispatchWishlist);
+    } else {
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+      removeFromWishlist(authToken, _id, dispatchWishlist);
+    }
   };
 
   useEffect(() => {
@@ -34,27 +40,6 @@ export const ProductCard = ({ product }) => {
     }
   }, [loginStatus, product]);
 
-  const toggleWishList = () => {
-    if (!isWishlisted.value) {
-      setIsWishlisted({ value: true, class: "wishlisted" });
-      const addToWishlistAPIResponse = addToWishlist(authToken, _id);
-      addToWishlistAPIResponse.then((data) => {
-        setUserState({
-          ...userState,
-          userDetails: { ...userDetails, wishlist: data },
-        });
-      });
-    } else {
-      const removeFromWishlistAPIResponse = removeFromWishlist(authToken, _id);
-      removeFromWishlistAPIResponse.then((data) =>
-        setUserState({
-          ...userState,
-          userDetails: { ...userDetails, wishlist: data },
-        })
-      );
-      setIsWishlisted({ value: false, class: "not-wishlisted" });
-    }
-  };
   return (
     <div className="product-card flex-column">
       <div className="product-img-container">

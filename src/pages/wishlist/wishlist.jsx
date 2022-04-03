@@ -1,13 +1,10 @@
 import "./wishlist.css";
 import { WishListItem } from "../../components/index";
-import { useAuth } from "../../contexts/index";
+import { useAuth, useWishlist } from "../../contexts/index";
 import { useNavigate } from "react-router-dom";
 export function WishList() {
   const navigate = useNavigate();
-  const { userState } = useAuth();
-  const {
-    userDetails: { wishlist },
-  } = userState;
+  const { wishlist } = useWishlist();
 
   if (wishlist.length === 0) {
     return (
@@ -27,9 +24,7 @@ export function WishList() {
       <section class="products-wishlist flex-column">
         <div class="wishlist-header flex-row">
           <h2>My Wishlist</h2>
-          <span class="align-end">
-            {wishlist.length === 0 ? "" : wishlist.length + " items"}
-          </span>
+          <span class="align-end">{wishlist.length + " items"}</span>
         </div>
         <div class="wishlist-items">
           {wishlist.map((item) => {

@@ -2,15 +2,14 @@ import "./Header.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "../index";
-import { useNavbar, useAuth } from "../../contexts/index";
+import { useNavbar, useAuth, useWishlist } from "../../contexts/index";
 import { useState } from "react";
 import { logout } from "../../services/auth-services/logout-service";
 export function Header() {
   const { userState, setUserState } = useAuth();
-  const { loginStatus, userDetails } = userState;
-  const { wishlist } = userDetails;
+  const { loginStatus, firstName } = userState;
+  const { wishlist } = useWishlist();
   const navigate = useNavigate();
-
   const { setShowResponsiveNavbarForMobile } = useNavbar();
 
   const [showLogoutBtn, setShowLogoutBtn] = useState(false);
@@ -114,7 +113,7 @@ export function Header() {
                 onClick={() => navigate("/")}
                 className="list-item align-center"
               >
-                {userDetails.firstName === "" ? "User" : userDetails.firstName}
+                {firstName === "" ? "User" : firstName}
               </li>
             ) : (
               <li
