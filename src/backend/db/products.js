@@ -1,19 +1,18 @@
 import { v4 as uuid } from "uuid";
 export const products = [
-  
+
   {
     _id: uuid(),
     productName: "Apple",
     category: "organicFruits",
     price: "30",
     prevPrice: "35",
+    discount:5,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/apple_dR9XVJw3e.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264646329",
     inStock: true,
     bestDeal: true,
     rating: 4.5,
-    ratingCount: 15,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -21,14 +20,13 @@ export const products = [
     category: "organicFruits",
     price: "5",
     prevPrice: "10",
+    discount:7,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/lemon_acfXA-6HJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264697839",
     inStock: true,
     bestDeal: true,
     rating: 3.5,
-    ratingCount: 13,
     isLatest: false,
     inStock: true,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -36,13 +34,12 @@ export const products = [
     category: "organicFruits",
     price: "38",
     prevPrice: "40",
+    discount:10,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/pomegranate_1n_nCkuNa.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1648275804075",
     inStock: true,
     bestDeal: false,
     rating: 2.8,
-    ratingCount: 12,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -50,13 +47,12 @@ export const products = [
     category: "organicSpices",
     price: "35",
     prevPrice: "50",
+    discount:12,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/chilli_S1Q0D_hFQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264660366",
     inStock: true,
     bestDeal: true,
     rating: 2.5,
-    ratingCount: 11,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -64,13 +60,12 @@ export const products = [
     category: "organicSpices",
     price: "25",
     prevPrice: "35",
+    discount:10,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/garlic_gjPzBcbNUg.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1648277953201",
     inStock: false,
     bestDeal: false,
     rating: 4.1,
-    ratingCount: 14,
     isLatest: true,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -78,13 +73,12 @@ export const products = [
     category: "organicSpices",
     price: "50",
     prevPrice: "55",
+    discount:20,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/ginger_c9hlyAsvo.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1648277953696",
     inStock: true,
     bestDeal: false,
     rating: 4.8,
-    ratingCount: 14,
     isLatest: true,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -92,13 +86,12 @@ export const products = [
     category: "organicVegetables",
     price: "7",
     prevPrice: "10",
+    discount:2,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/beetroot_PBkYRIvvc.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264706542",
     inStock: false,
     bestDeal: false,
     rating: 1.5,
-    ratingCount: 6,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -106,13 +99,12 @@ export const products = [
     category: "organicVegetables",
     price: "15",
     prevPrice: "20",
+    discount:5,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/cauli-flower_Oh_HAtN1x.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264702792",
     inStock: true,
     bestDeal: false,
     rating: 5,
-    ratingCount: 8,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -120,13 +112,12 @@ export const products = [
     category: "organicVegetables",
     price: "100",
     prevPrice: "120",
+    discount:20,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/brinjal_bharth_N5pYEiAbC.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1648280285327",
     inStock: false,
     bestDeal: false,
     rating: 1.5,
-    ratingCount: 6,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -134,13 +125,12 @@ export const products = [
     category: "organicVegetables",
     price: "25",
     prevPrice: "30",
+    discount:5,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/green-peas_5u1YzG6zl.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264707617",
     inStock: true,
     bestDeal: false,
     rating: 3.2,
-    ratingCount: 15,
     isLatest: true,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -148,13 +138,12 @@ export const products = [
     category: "organicDairy",
     price: "620",
     prevPrice: "650",
+    discount:100,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/danedar-ghee_Y7r3QlJ5p.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264646330",
     inStock: true,
     bestDeal: false,
     rating: 4,
-    ratingCount: 17,
     isLatest: true,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -162,13 +151,12 @@ export const products = [
     category: "organicDairy",
     price: "1575",
     prevPrice: "1685",
+    discount:300,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/A2-ghee_wnSBHvWCP.png?ik-sdk-version=javascript-1.4.3&updatedAt=1648264635819",
     inStock: false,
     bestDeal: true,
     rating: 2.5,
-    ratingCount: 19,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -176,13 +164,12 @@ export const products = [
     category: "organicDairy",
     price: "899",
     prevPrice: "999",
+    discount:200,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/cultured-ghee_x7IMwYeMo.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648276147265",
     inStock: false,
     bestDeal: false,
     rating: 3.5,
-    ratingCount: 19,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -190,13 +177,12 @@ export const products = [
     category: "organicOils",
     price: "699",
     prevPrice: "799",
+    discount:125,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/coconut-oil_oess0alND.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648278385702",
     inStock: true,
     bestDeal: false,
     rating: 3.7,
-    ratingCount: 13,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -204,13 +190,12 @@ export const products = [
     category: "organicOils",
     price: "599",
     prevPrice: "699",
+    discount:102,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/sunflower-oil_pET5Nb6t3.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648278334147",
     inStock: true,
     bestDeal: false,
     rating: 2.8,
-    ratingCount: 13,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -218,13 +203,12 @@ export const products = [
     category: "organicOils",
     price: "399",
     prevPrice: "499",
+    discount:99,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/mustard-oil_uFKuyATGN2.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648278334171",
     inStock: true,
     bestDeal: false,
     rating: 4.2,
-    ratingCount: 13,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -232,13 +216,12 @@ export const products = [
     category: "organicGroceries",
     price: "299",
     prevPrice: "399",
+    discount:80,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/jaggery-powder_Fk1tFdj27.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648298143611",
     inStock: true,
     bestDeal: false,
     rating: 5,
-    ratingCount: 13,
     isLatest: false,
-    userSetQuantity: 1
   },
   {
     _id: uuid(),
@@ -246,13 +229,12 @@ export const products = [
     category: "organicGroceries",
     price: "105",
     prevPrice: "145",
+    discount:86,
     imgSrc: "https://ik.imagekit.io/mandeshiagro/assets/products/jaggery-powder_Fk1tFdj27.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1648298143611",
     inStock: true,
     bestDeal: false,
     rating: 3.5,
-    ratingCount: 3,
     isLatest: false,
-    userSetQuantity: 1
   }
 
 ];
