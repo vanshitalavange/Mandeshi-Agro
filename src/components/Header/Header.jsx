@@ -2,13 +2,14 @@ import "./Header.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ResponsiveNavbarForMobile, ResponsiveNavbarForTablet } from "../index";
-import { useNavbar, useAuth, useWishlist } from "../../contexts/index";
+import { useNavbar, useAuth, useWishlist, useCart } from "../../contexts/index";
 import { useState } from "react";
 import { logout } from "../../services/auth-services/logout-service";
 export function Header() {
   const { userState, setUserState } = useAuth();
   const { loginStatus, firstName } = userState;
   const { wishlist } = useWishlist();
+  const { cart } = useCart();
   const navigate = useNavigate();
   const { setShowResponsiveNavbarForMobile } = useNavbar();
 
@@ -47,7 +48,7 @@ export function Header() {
               <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
               {loginStatus && (
                 <span className="badge-counter badge-round badge-counter-right">
-                  0
+                  {cart.length}
                 </span>
               )}
             </div>
@@ -86,7 +87,7 @@ export function Header() {
                 <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
                 {loginStatus && (
                   <span className="badge-counter badge-round badge-counter-right">
-                    0
+                    {cart.length}
                   </span>
                 )}
               </div>
@@ -113,7 +114,7 @@ export function Header() {
                 onClick={() => navigate("/")}
                 className="list-item align-center"
               >
-                {firstName === "" ? "User" : firstName}
+                {firstName === "" ? "Adarsh" : firstName}
               </li>
             ) : (
               <li

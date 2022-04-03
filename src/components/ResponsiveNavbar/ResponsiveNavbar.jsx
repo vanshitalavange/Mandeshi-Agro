@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useNavbar, useAuth, useWishlist } from "../../contexts/index";
+import { useNavbar, useAuth, useWishlist, useCart } from "../../contexts/index";
 import "./ResponsiveNavbar.css";
 import { logout } from "../../services/auth-services/logout-service";
 export function ResponsiveNavbarForMobile() {
@@ -61,6 +61,7 @@ export function ResponsiveNavbarForTablet() {
   const { loginStatus } = userState;
   const navigate = useNavigate();
   const { wishlist } = useWishlist();
+  const {cart} = useCart()
   return (
     <ul className="nav-list-for-tablets flex-row">
       <li>
@@ -79,7 +80,7 @@ export function ResponsiveNavbarForTablet() {
             <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
             {loginStatus && (
               <span className="badge-counter badge-round badge-counter-right">
-                0
+                {cart.length}
               </span>
             )}
           </div>
