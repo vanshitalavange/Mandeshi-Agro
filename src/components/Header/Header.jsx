@@ -6,9 +6,8 @@ import { useNavbar, useAuth } from "../../contexts/index";
 import { useState } from "react";
 import { logout } from "../../services/auth-services/logout-service";
 export function Header() {
- 
   const { userState, setUserState } = useAuth();
-  const { loginStatus,  userDetails } = userState;
+  const { loginStatus, userDetails } = userState;
   const { wishlist } = userDetails;
   const navigate = useNavigate();
 
@@ -37,19 +36,21 @@ export function Header() {
       </Link>
       <div className="search-bar-box align-center flex-row justify-space-between">
         <input className="search-bar" type="text" placeholder="Search" />
-        <i className="fa fa-search header-icon align-center"></i>
+        <i className="fa fa-search header-icon align-end"></i>
       </div>
       <nav className="nav-bar align-center">
         <div className="responsive-header-links flex-row ml-auto">
           <button>
-            <i className="fa fa-search header-icon align-end mobile-search-icon"></i>
+            <i className="fa fa-search mobile-search-icon header-icon header-badge-icon align-end"></i>
           </button>
           <Link to="/cart">
             <div className="badge mobile-cart-icon">
               <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
-              <span className="badge-counter badge-round badge-counter-right">
-                0
-              </span>
+              {loginStatus && (
+                <span className="badge-counter badge-round badge-counter-right">
+                  0
+                </span>
+              )}
             </div>
           </Link>
           {loginStatus ? (
@@ -74,19 +75,21 @@ export function Header() {
         <ul className="nav-list flex-row">
           <Link to="/products">
             <div className="list-item-box flex-row">
-              <span className="material-icons header-icon products-icon align-center">
+              <span className="material-icons header-icon header-badge-icon">
                 inventory
               </span>
-              <li className="list-item list-item-products">Products</li>
+              <li className="list-item align-center">Products</li>
             </div>
           </Link>
           <Link to="/cart">
             <div className="list-item-box flex-row">
               <div className="badge">
                 <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
-                <span className="badge-counter badge-round badge-counter-right">
-                  0
-                </span>
+                {loginStatus && (
+                  <span className="badge-counter badge-round badge-counter-right">
+                    0
+                  </span>
+                )}
               </div>
               <li className="list-item align-center">Cart</li>
             </div>
@@ -95,9 +98,11 @@ export function Header() {
             <div className="list-item-box flex-row">
               <div className="badge">
                 <i className="fa fa-heart header-icon header-badge-icon"></i>
-                <span className="badge-counter badge-round badge-counter-right">
-                  {loginStatus ? wishlist.length : 0}
-                </span>
+                {loginStatus && (
+                  <span className="badge-counter badge-round badge-counter-right">
+                    {wishlist.length}
+                  </span>
+                )}
               </div>
               <li className="list-item align-center">Wishlist</li>
             </div>

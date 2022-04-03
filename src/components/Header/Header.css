@@ -38,7 +38,7 @@
 /** header nav **/
 .nav-list,
 .responsive-header-links {
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
 }
 .nav-list-for-tablets {
   display: none;
@@ -48,7 +48,7 @@
   display: none;
 }
 .list-item-box {
-  gap: var(--spacing-xxs);
+  gap: 0.2rem;
 }
 .list-item-box:nth-child(5) {
   gap: 0.1rem;
@@ -68,10 +68,7 @@
 }
 .header-icon {
   color: var(--header-item-grey-color);
-  font-size: var(--font-size-md);
-}
-.products-icon {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
 }
 .list-item {
   color: var(--header-item-grey-color);
@@ -82,14 +79,14 @@
   cursor: pointer;
   color: var(--primary-color);
 }
-.btn-logout{
-  color:var(--secondary-color);
-  border-radius:var(--border-rd-sm);
-  padding:0.2rem var(--spacing-xxs);
+.btn-logout {
+  color: var(--secondary-color);
+  border-radius: var(--border-rd-sm);
+  padding: 0.2rem var(--spacing-xxs);
   position: absolute;
-  top:4.3rem;
-  right:0;
-  background-color:#eaffb3;
+  top: 4.3rem;
+  right: 0;
+  background-color: #eaffb3;
 }
 @media only screen and (max-width: 900px) {
   .search-bar-box {

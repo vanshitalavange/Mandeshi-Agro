@@ -49,7 +49,7 @@ export function ResponsiveNavbarForMobile() {
             onClick={() => setShowResponsiveNavbarForMobile(false)}
             className="responsive-nav-list-item"
           >
-            Wishlist {loginStatus ? `(${wishlist.length})` : `(0)`}
+            Wishlist {loginStatus && `(${wishlist.length})`}
           </li>
         </Link>
       </ul>
@@ -66,11 +66,11 @@ export function ResponsiveNavbarForTablet() {
   return (
     <ul className="nav-list-for-tablets flex-row">
       <li>
-        <i className="fa fa-search header-icon align-center"></i>
+        <i className="fa fa-search header-icon header-badge-icon align-end"></i>
       </li>
       <Link to="/products">
         <li>
-          <span className="material-icons header-icon products-icon align-center">
+          <span className="material-icons header-icon header-badge-icon align-end">
             inventory
           </span>
         </li>
@@ -79,9 +79,11 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-shopping-cart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">
-              0
-            </span>
+            {loginStatus && (
+              <span className="badge-counter badge-round badge-counter-right">
+                0
+              </span>
+            )}
           </div>
         </li>
       </Link>
@@ -89,9 +91,11 @@ export function ResponsiveNavbarForTablet() {
         <li>
           <div className="badge">
             <i className="fa fa-heart header-icon header-badge-icon"></i>
-            <span className="badge-counter badge-round badge-counter-right">
-              {loginStatus ? wishlist.length : 0}
-            </span>
+            {loginStatus && (
+              <span className="badge-counter badge-round badge-counter-right">
+                {wishlist.length}
+              </span>
+            )}
           </div>
         </li>
       </Link>
