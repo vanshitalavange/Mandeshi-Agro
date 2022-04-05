@@ -17,7 +17,7 @@ export const CartTotal = () => {
           </div>
           <div className="cart-summary-item flex-row justify-space-between">
             <span>Discount</span>
-            <span>- ₹ {discountTotal}</span>
+            <span> ₹ {discountTotal}</span>
           </div>
           <div className="cart-summary-item flex-row justify-space-between">
             <span>Delivery charges</span>

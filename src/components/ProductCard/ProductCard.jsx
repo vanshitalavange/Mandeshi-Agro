@@ -60,7 +60,6 @@ export const ProductCard = ({ product }) => {
       setProductInCart({
         value: true,
         action: "GO TO CART",
-        navigationLink: "/cart",
       });
       addToCart(authToken, product, dispatchCart);
     } else {
@@ -102,7 +101,7 @@ export const ProductCard = ({ product }) => {
         </div>
         <div className="product-card-actions flex-row flex-wrap">
           <button
-            onClick={() => handleCart()}
+            onClick={() => (loginStatus ? handleCart() : navigate("/login"))}
             className="btn-add-cart flex-row-center"
           >
             <i className="fa fa-shopping-cart"></i>

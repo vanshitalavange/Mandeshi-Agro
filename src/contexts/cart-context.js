@@ -23,7 +23,7 @@ const CartProvider = ({ children }) => {
     }, [authToken])
 
     const updateProductQuantityHandler = (authToken, productId, actionType, productQty) => {
-        if (productQty === 1 && actionType === "decrement") {
+        if (productQty <= 1 && actionType === "decrement") {
             removeFromCart(authToken, productId, dispatchCart);
         } else {
             updateProductQuantity(authToken, productId, actionType, dispatchCart);
