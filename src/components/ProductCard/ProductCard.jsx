@@ -53,7 +53,7 @@ export const ProductCard = ({ product }) => {
     } else {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
     }
-  }, [loginStatus, product, cart]);
+  }, [loginStatus, product, cart, wishlist]);
 
   const handleCart = () => {
     if (!productInCart.value) {
