@@ -3,11 +3,12 @@ import "./Filters.css";
 import { useFilters } from "../../contexts/index";
 
 export const Filters = () => {
-  const {filterState,dispatchFilters} = useFilters();
-  const {lowToHigh,highToLow,categoryState,priceRange} = filterState;
+  const { filterState, dispatchFilters } = useFilters();
+  const { lowToHigh, highToLow, categoryState, priceRange } = filterState;
   /** state used to toggle between responsive filter and normal filter **/
+  const deviceWidth = window.innerWidth;
   const [filtersClassName, setFiltersClassName] = useState(
-    "filters-wrapper flex-column"
+    deviceWidth <= 897 ? "hide-filters" : "filters-wrapper flex-column"
   );
   const checkDeviceWidth = () => {
     const deviceWidth = window.innerWidth;
@@ -17,7 +18,10 @@ export const Filters = () => {
       setFiltersClassName("filters-wrapper flex-column");
     }
   };
-  useEffect(() => window.addEventListener("resize", checkDeviceWidth), []);
+  useEffect(() => {
+    window.addEventListener("resize", checkDeviceWidth);
+  }, []);
+
   const showFilters = () => {
     setFiltersClassName(
       filtersClassName ===
@@ -32,7 +36,9 @@ export const Filters = () => {
       <div className="responsive-filters flex-row">
         Sort by filters
         <button onClick={() => showFilters()}>
-          <span className="material-icons arrow-drop-down">arrow_drop_down</span>
+          <span className="material-icons arrow-drop-down">
+            arrow_drop_down
+          </span>
         </button>
       </div>
       <div className={filtersClassName}>
@@ -41,7 +47,12 @@ export const Filters = () => {
             <i className="fa fa-filter align-center"></i>
             <h3>Filters</h3>
           </div>
-          <button onClick={() => dispatchFilters({type:"CLEAR_ALL"})} className="align-end filters-clear-all">Clear all</button>
+          <button
+            onClick={() => dispatchFilters({ type: "CLEAR_ALL" })}
+            className="align-end filters-clear-all"
+          >
+            Clear all
+          </button>
         </div>
         <div className="filters-body flex-column">
           <div className="filter-category-wrapper flex-column">
@@ -49,13 +60,27 @@ export const Filters = () => {
             <label htmlFor="price-range">
               <span>₹5 - ₹{priceRange}</span>
             </label>
-            <input onChange={(event)=>dispatchFilters({type:"PRICE_RANGE",payload:event.target.value})} min="5" max="1575" type="range" value={priceRange} className="price-range" />
+            <input
+              onChange={(event) =>
+                dispatchFilters({
+                  type: "PRICE_RANGE",
+                  payload: event.target.value,
+                })
+              }
+              min="5"
+              max="1575"
+              type="range"
+              value={priceRange}
+              className="price-range"
+            />
           </div>
           <div className="filter-category-wrapper flex-column">
             <h4 className="filter-heading">SORT BY</h4>
             <div className="form-group-input-control flex-row">
               <input
-                onChange={() => dispatchFilters({type:"LOW_TO_HIGH",payload:true})}
+                onChange={() =>
+                  dispatchFilters({ type: "LOW_TO_HIGH", payload: true })
+                }
                 type="radio"
                 name="sort-by-filter-radio"
                 className="input-control"
@@ -66,7 +91,9 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-               onChange={() => dispatchFilters({type:"HIGH_TO_LOW",payload:true})}
+                onChange={() =>
+                  dispatchFilters({ type: "HIGH_TO_LOW", payload: true })
+                }
                 type="radio"
                 name="sort-by-filter-radio"
                 className="input-control"
@@ -80,7 +107,12 @@ export const Filters = () => {
             <h4 className="filter-heading">CATEGORY</h4>
             <div className="form-group-input-control flex-row">
               <input
-                onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicFruits"})}
+                onChange={() =>
+                  dispatchFilters({
+                    type: "CATEGORY",
+                    payload: "organicFruits",
+                  })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -91,7 +123,9 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-               onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicDairy"})}
+                onChange={() =>
+                  dispatchFilters({ type: "CATEGORY", payload: "organicDairy" })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -104,7 +138,9 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-              onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicOils"})}
+                onChange={() =>
+                  dispatchFilters({ type: "CATEGORY", payload: "organicOils" })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -115,7 +151,12 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-                onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicSpices"})}
+                onChange={() =>
+                  dispatchFilters({
+                    type: "CATEGORY",
+                    payload: "organicSpices",
+                  })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -126,7 +167,12 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-              onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicVegetables"})}
+                onChange={() =>
+                  dispatchFilters({
+                    type: "CATEGORY",
+                    payload: "organicVegetables",
+                  })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -137,7 +183,12 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-              onChange={() => dispatchFilters({type:"CATEGORY",payload:"organicGroceries"})}
+                onChange={() =>
+                  dispatchFilters({
+                    type: "CATEGORY",
+                    payload: "organicGroceries",
+                  })
+                }
                 type="checkbox"
                 name="checkbox"
                 className="input-control"
@@ -151,7 +202,7 @@ export const Filters = () => {
             <h4 className="filter-heading">RATINGS</h4>
             <div className="form-group-input-control flex-row">
               <input
-                onChange={()=>dispatchFilters({type:"RATING",payload:4})}
+                onChange={() => dispatchFilters({ type: "RATING", payload: 4 })}
                 type="radio"
                 name="rating-filter-radio"
                 className="input-control"
@@ -161,7 +212,7 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-                 onChange={()=>dispatchFilters({type:"RATING",payload:3})}
+                onChange={() => dispatchFilters({ type: "RATING", payload: 3 })}
                 type="radio"
                 name="rating-filter-radio"
                 className="input-control"
@@ -171,7 +222,7 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-               onChange={()=>dispatchFilters({type:"RATING",payload:2})}
+                onChange={() => dispatchFilters({ type: "RATING", payload: 2 })}
                 type="radio"
                 name="rating-filter-radio"
                 className="input-control"
@@ -181,7 +232,7 @@ export const Filters = () => {
             </div>
             <div className="form-group-input-control flex-row">
               <input
-               onChange={()=>dispatchFilters({type:"RATING",payload:1})}
+                onChange={() => dispatchFilters({ type: "RATING", payload: 1 })}
                 type="radio"
                 name="rating-filter-radio"
                 className="input-control"
