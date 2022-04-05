@@ -1,14 +1,19 @@
 import "./ProductCard.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useWishlist } from "../../contexts/index";
-import { addToWishlist, removeFromWishlist } from "../../services/index";
+import { useAuth, useWishlist, useCart } from "../../contexts/index";
+import {
+  addToWishlist,
+  removeFromWishlist,
+  addToCart,
+} from "../../services/index";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { userState } = useAuth();
   const { loginStatus, authToken } = userState;
   const { wishlist, dispatchWishlist, isProductInWishlist } = useWishlist();
+  const { cart, dispatchCart, isProductInCart } = useCart();
 
   const [isWishlisted, setIsWishlisted] = useState({
     value: false,
@@ -20,12 +25,17 @@ export const ProductCard = ({ product }) => {
   const toggleWishList = () => {
     if (!isWishlisted.value) {
       setIsWishlisted({ value: true, class: "wishlisted" });
-      addToWishlist(authToken, _id, dispatchWishlist);
+      addToWishlist(authToken, product, dispatchWishlist);
     } else {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
       removeFromWishlist(authToken, _id, dispatchWishlist);
     }
   };
+
+  const [productInCart, setProductInCart] = useState({
+    value: false,
+    action: "ADD TO CART",
+  });
 
   useEffect(() => {
     if (loginStatus) {
@@ -34,10 +44,28 @@ export const ProductCard = ({ product }) => {
           ? { value: true, class: "wishlisted" }
           : { value: false, class: "not-wishlisted" }
       );
+      setProductInCart(
+        isProductInCart(cart, product)
+          ? { value: true, action: "GO TO CART" }
+          : { value: false, action: "ADD TO CART" }
+      );
     } else {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
     }
-  },[loginStatus,product,wishlist]);
+
+  }, [loginStatus, product, cart, wishlist]);
+
+  const handleCart = () => {
+    if (!productInCart.value) {
+      setProductInCart({
+        value: true,
+        action: "GO TO CART",
+      });
+      addToCart(authToken, product, dispatchCart);
+    } else {
+      navigate("/cart");
+    }
+  };
 
   return (
     <div className="product-card flex-column">
@@ -73,10 +101,13 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="product-card-actions flex-row flex-wrap">
-          <a href="#" className="btn-add-cart flex-row-center">
+          <button
+            onClick={() => (loginStatus ? handleCart() : navigate("/login"))}
+            className="btn-add-cart flex-row-center"
+          >
             <i className="fa fa-shopping-cart"></i>
-            ADD TO CART
-          </a>
+            {productInCart.action}
+          </button>
         </div>
       </div>
     </div>

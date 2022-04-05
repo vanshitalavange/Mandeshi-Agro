@@ -8,7 +8,7 @@ export const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={loginStatus ? <Cart /> : <Navigate replace to="/login" />} />
         <Route path="/products" element={<Products />} />
         <Route path="/wishlist" element={loginStatus ? <WishList /> : <Navigate replace to="/login" />} />
         <Route path="/mockman" element={<Mockman />} />

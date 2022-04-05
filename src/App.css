@@ -14,9 +14,9 @@
   --form-input-bg-color: hsl(0, 0%, 93%);
   --remove-icon-color: hsl(0, 4%, 75%);
   --price-text-color: hsl(0, 1%, 22%);
-  --required-field-indicator-color: hsl(0, 100%, 50%);
+  --required-field-indicator-color: hsl(0, 95%, 60%);
   --footer-background-color: hsl(0, 0%, 95.5%);
-  --item-wishlisted-color:hsl(7, 100%, 67%);
+  --item-wishlisted-color: hsl(7, 100%, 67%);
 
   /** spacing **/
   --spacing-xxs: 0.5rem;
@@ -55,12 +55,27 @@ body {
   margin-top: var(--spacing-xxs);
 }
 /** overriding component library styles **/
-h3,h4,h5{
-  padding-top:0;
+h3,
+h4,
+h5 {
+  padding-top: 0;
 }
-label{
-  color:black;
+label {
+  color: black;
 }
-.display-none{
-  display:none;
+.display-none {
+  display: none;
+}
+/** styles for empty cart and wishlist **/
+.empty {
+  margin-top: var(--spacing-sm);
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+.btn-continue-shopping {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-rd-sm);
 }
