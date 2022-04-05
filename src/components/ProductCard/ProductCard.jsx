@@ -52,6 +52,7 @@ export const ProductCard = ({ product }) => {
       );
     } else {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
+      setProductInCart({ value: false, action: "ADD TO CART" });
     }
   }, [loginStatus, product, cart, wishlist]);
 
