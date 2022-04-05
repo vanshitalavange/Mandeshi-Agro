@@ -10,7 +10,6 @@ import {
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-
   const { userState } = useAuth();
   const { loginStatus, authToken } = userState;
   const { wishlist, dispatchWishlist, isProductInWishlist } = useWishlist();
@@ -54,6 +53,7 @@ export const ProductCard = ({ product }) => {
       setIsWishlisted({ value: false, class: "not-wishlisted" });
       setProductInCart({ value: false, action: "ADD TO CART" });
     }
+
   }, [loginStatus, product, cart, wishlist]);
 
   const handleCart = () => {
@@ -79,6 +79,7 @@ export const ProductCard = ({ product }) => {
         }}
         className="wishlist"
       >
+        {/* <i className={`fa fa-heart ${isProductInWishlist(wishlist,product) ? "wishlisted" : "not-wishlisted"}`}></i> */}
         <i className={`fa fa-heart ${isWishlisted.class}`}></i>
       </span>
       <div className="product-card-body flex-column">
