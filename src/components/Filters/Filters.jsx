@@ -46,7 +46,7 @@ export const Filters = () => {
         <div className="filters-body flex-column">
           <div className="filter-category-wrapper flex-column">
             <h4 className="filter-heading">PRICE</h4>
-            <label for="price-range">
+            <label htmlFor="price-range">
               <span>₹5 - ₹{priceRange}</span>
             </label>
             <input onChange={(event)=>dispatchFilters({type:"PRICE_RANGE",payload:event.target.value})} min="5" max="1575" type="range" value={priceRange} className="price-range" />

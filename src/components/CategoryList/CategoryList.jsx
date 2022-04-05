@@ -11,7 +11,7 @@ export const CategoryList = () => {
       <h1 className="section-title text-centered">Our categories</h1>
       <div className="categories-cards-wrapper">
         {categories.map((category) => (
-          <CategoryItem category={category} />
+          <CategoryItem key={category._id} category={category} />
         ))}
       </div>
     </section>

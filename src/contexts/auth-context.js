@@ -1,15 +1,22 @@
 import { createContext, useContext, useState, useEffect } from "react";
+
 const AuthContext = createContext(null)
+
 const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userDetails, setUserDetails] = useState({ firstName: "", lastName: "", cart: [], wishlist: [] })
-  const token = localStorage.getItem('token')
+  const [userState, setUserState] = useState({
+    loginStatus: false,
+    authToken: "",
+    firstName: ""
+  })
+  const authToken = localStorage.getItem('authToken');
   useEffect(() => {
-    if (token) {
-      setIsLoggedIn(true)
+    if (authToken) {
+      setUserState(userState => ({ ...userState, loginStatus: true, authToken }))
     }
-  }, [])
-  return <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userDetails, setUserDetails }}>{children}</AuthContext.Provider>
+  }, [authToken])
+  return <AuthContext.Provider value={{ userState, setUserState }}>{children}</AuthContext.Provider>
 }
+
 const useAuth = () => useContext(AuthContext)
+
 export { useAuth, AuthProvider }

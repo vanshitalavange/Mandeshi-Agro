@@ -1,23 +1,57 @@
 import "./ProductCard.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth, useWishlist } from "../../contexts/index";
+import { addToWishlist, removeFromWishlist } from "../../services/index";
 
 export const ProductCard = ({ product }) => {
-  const {
-    _id,
-    productName,
-    price,
-    prevPrice,
-    imgSrc,
-    rating,
-    userSetQuantity,
-  } = { ...product };
+  const navigate = useNavigate();
+  const { userState } = useAuth();
+  const { loginStatus, authToken } = userState;
+  const { wishlist, dispatchWishlist, isProductInWishlist } = useWishlist();
+
+  const [isWishlisted, setIsWishlisted] = useState({
+    value: false,
+    class: "not-wishlisted",
+  });
+
+  const { _id, productName, price, prevPrice, imgSrc, rating } = { ...product };
+
+  const toggleWishList = () => {
+    if (!isWishlisted.value) {
+      setIsWishlisted({ value: true, class: "wishlisted" });
+      addToWishlist(authToken, _id, dispatchWishlist);
+    } else {
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+      removeFromWishlist(authToken, _id, dispatchWishlist);
+    }
+  };
+
+  useEffect(() => {
+    if (loginStatus) {
+      setIsWishlisted(
+        isProductInWishlist(wishlist, product)
+          ? { value: true, class: "wishlisted" }
+          : { value: false, class: "not-wishlisted" }
+      );
+    } else {
+      setIsWishlisted({ value: false, class: "not-wishlisted" });
+    }
+  },[loginStatus,product,wishlist]);
 
   return (
     <div className="product-card flex-column">
       <div className="product-img-container">
         <img className="responsive-img" src={imgSrc} alt={productName} />
       </div>
-      <span className="wishlist">
-        <i className="fa fa-heart"></i>
+      <span
+        onClick={() => {
+          loginStatus ? toggleWishList() : navigate("/login");
+        }}
+        className="wishlist"
+      >
+        {/* <i className={`fa fa-heart ${isProductInWishlist(wishlist,product) ? "wishlisted" : "not-wishlisted"}`}></i> */}
+        <i className={`fa fa-heart ${isWishlisted.class}`}></i>
       </span>
       <div className="product-card-body flex-column">
         <div className="product-desc">

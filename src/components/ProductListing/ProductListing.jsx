@@ -11,7 +11,7 @@ export const ProductListing = ({ products, loading, errorFlag }) => {
         <h1>No Products Found</h1>
       ) : (
         products.map((product) => {
-          return <ProductCard product={product} />;
+          return <ProductCard key={product._id} product={product} />;
         })
       )}
     </section>

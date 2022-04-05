@@ -1,43 +1,33 @@
 import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { useAuth } from "../../contexts/index";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
+import { getFormInput } from "../../utilities/get-form-input";
+import { loginHandler } from "../../services/auth-services/login-service";
+
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setIsLoggedIn, setUserDetails } = useAuth();
+
+  const { setUserState } = useAuth();
+
   const navigate = useNavigate();
+
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
+
+  const [errorAlert, setErrorAlert] = useState("display-none");
+
   const guestCredentials = {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
-  const setDetails = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setLoginCredentials({ ...loginCredentials, [name]: value });
-  };
-  const loginHandler = async (data) => {
-    try {
-      const response = await axios.post("/api/auth/login", data);
-      if (response.status === 200) {
-        setIsLoggedIn(true);
-        setUserDetails(response.data.foundUser);
-        localStorage.setItem("token", response.data.encodedToken);
-        navigate("/");
-      }
-    } catch (error) {
-      setErrorMsg("YOUR EMAIL IS NOT REGISTERED WITH US😔");
-    }
-  };
+
   const submitLoginForm = (event) => {
     event.preventDefault();
-    loginHandler(loginCredentials);
+    loginHandler(loginCredentials, setUserState, navigate, setErrorAlert);
   };
   return (
     <section className="login flex-col-center">
@@ -46,12 +36,13 @@ export const Login = () => {
         <div className="input-field-wrapper flex-column">
           <label htmlFor="email">Email</label>
           <input
-            onChange={(event) => setDetails(event)}
+            onChange={(event) => getFormInput(event, setLoginCredentials)}
             id="email"
             className="form-input"
             name="email"
             type="email"
             placeholder="user@example.com"
+            value={loginCredentials.email}
             required
           />
         </div>
@@ -59,12 +50,13 @@ export const Login = () => {
           <label htmlFor="password">Password</label>
           <div className="input-box flex-row">
             <input
-              onChange={(event) => setDetails(event)}
+              onChange={(event) => getFormInput(event, setLoginCredentials)}
               id="password"
               className="form-input"
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="password"
+              value={loginCredentials.password}
               required
             />
             {!showPassword ? (
@@ -86,7 +78,6 @@ export const Login = () => {
             )}
           </div>
         </div>
-        <small className="error-msg text-centered">{errorMsg}</small>
         <div
           type="submit"
           className="btn icon-btn-container icon-btn-container-logout btn-verify justify-center btn-primary"
@@ -96,7 +87,12 @@ export const Login = () => {
         </div>
       </form>
       <div
-        onClick={() => loginHandler(guestCredentials)}
+        onClick={() => {
+          setLoginCredentials({email:"adarshbalika@gmail.com",password:"adarshbalika"});
+          loginHandler(guestCredentials, setUserState, navigate, setErrorAlert)
+          setShowPassword(false)
+        }
+        }
         className="btn icon-btn-container icon-btn-container-logout btn-verify justify-center btn-secondary"
       >
         <span className="material-icons btn-icon"> east </span>
@@ -108,6 +104,21 @@ export const Login = () => {
           Signup here
         </Link>
       </p>
+      {/* alert for unsuccessful login */}
+      <div className={errorAlert}>
+        <span className="material-icons-round alert-icon danger-icon">
+          {" "}
+          dangerous{" "}
+        </span>
+        <p className="alert-msg">Your email is not registered</p>
+        <span
+          onClick={() => setErrorAlert("display-none")}
+          className="material-icons ml-auto"
+        >
+          {" "}
+          close{" "}
+        </span>
+      </div>
     </section>
   );
 };

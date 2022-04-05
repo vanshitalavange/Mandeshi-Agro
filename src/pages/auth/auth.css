@@ -67,6 +67,11 @@ label {
 .msg {
   margin-top: var(--spacing-xs);
 }
+.alert{
+  padding:1rem;
+  position: absolute;
+  top:6rem;
+}
 @media only screen and (max-width: 427px) {
   .login,
   .signup {

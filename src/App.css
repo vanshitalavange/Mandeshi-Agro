@@ -6,7 +6,7 @@
   --accent-color: hsl(133, 41%, 54%);
   --scroll-x-icon-color: hsl(0, 0%, 50%);
   --scroll-x-icon-bg-color: hsl(0, 2%, 91%);
-  --header-item-grey-color: hsl(0, 1%, 60%);
+  --header-item-grey-color: hsl(0, 1%, 55%);
   --search-icon-hover-color: hsl(0, 6%, 90%);
   --title-border-bottom-color: hsl(0, 3%, 82%);
   --product-card-grey-color: hsl(0, 0%, 80%);
@@ -16,6 +16,7 @@
   --price-text-color: hsl(0, 1%, 22%);
   --required-field-indicator-color: hsl(0, 100%, 50%);
   --footer-background-color: hsl(0, 0%, 95.5%);
+  --item-wishlisted-color:hsl(7, 100%, 67%);
 
   /** spacing **/
   --spacing-xxs: 0.5rem;
@@ -59,4 +60,7 @@ h3,h4,h5{
 }
 label{
   color:black;
+}
+.display-none{
+  display:none;
 }
