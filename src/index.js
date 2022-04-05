@@ -4,6 +4,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider, NavbarProvider, ProductProvider, WishlistProvider, CartProvider } from "./contexts/index"
+
 // Call make Server
 makeServer();
 
